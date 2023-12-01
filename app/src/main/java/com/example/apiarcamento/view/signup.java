@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.apiarcamento.MainActivity;
 import com.example.apiarcamento.R;
 
 public class signup extends AppCompatActivity {

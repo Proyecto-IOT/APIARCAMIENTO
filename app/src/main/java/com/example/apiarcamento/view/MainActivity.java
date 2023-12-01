@@ -1,4 +1,4 @@
-package com.example.apiarcamento;
+package com.example.apiarcamento.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.apiarcamento.R;
 import com.example.apiarcamento.view.signup;
 
 public class MainActivity extends AppCompatActivity {
