@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.apiarcamento.R;
+import com.example.apiarcamento.view.fragments.fragment;
 
 public class activity_estacionamiento extends AppCompatActivity {
 

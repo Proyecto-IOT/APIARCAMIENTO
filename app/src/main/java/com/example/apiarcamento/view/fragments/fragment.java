@@ -1,4 +1,4 @@
-    package com.example.apiarcamento.view;
+    package com.example.apiarcamento.view.fragments;
 
     import android.content.Intent;
     import android.os.Bundle;
@@ -13,6 +13,7 @@
     import android.widget.Button;
 
     import com.example.apiarcamento.R;
+    import com.example.apiarcamento.view.signup;
     import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 
