@@ -16,11 +16,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnSignUp = findViewById(R.id.btn_registrar);
+        Button btnLogIn = findViewById(R.id.btn_login);
 
         btnSignUp.setOnClickListener(view -> {
             Intent registrarse = new Intent(this, signup.class);
             startActivity(registrarse);
         });
 
+        btnLogIn.setOnClickListener(view -> {
+            Intent Iniciar = new Intent(this, Home.class);
+            startActivity(Iniciar);
+        });
     }
 }
