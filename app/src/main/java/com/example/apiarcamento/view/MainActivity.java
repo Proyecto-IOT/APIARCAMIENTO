@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         //Intent estacionamiento = new Intent(this, activity_estacionamiento.class);
         //startActivity(estacionamiento);
         btnSignUp.setOnClickListener(view -> {
-            Intent registrarse = new Intent(this, activity_estacionamiento.class);
+            Intent registrarse = new Intent(this, signup.class);
             startActivity(registrarse);
         });
 
