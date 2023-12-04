@@ -1,4 +1,4 @@
-package com.example.apiarcamento.view.fragment;
+package com.example.apiarcamento.view.fragments;
 
 import android.os.Bundle;
 

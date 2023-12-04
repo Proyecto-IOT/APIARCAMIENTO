@@ -2,19 +2,16 @@ package com.example.apiarcamento.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.WindowManager;
 
 import com.example.apiarcamento.R;
-import com.example.apiarcamento.view.fragment.HomeFragment;
-import com.example.apiarcamento.view.fragment.ProfileFragment;
-import com.example.apiarcamento.view.fragment.RegFragment;
+import com.example.apiarcamento.view.fragments.HomeFragment;
+import com.example.apiarcamento.view.fragments.ProfileFragment;
+import com.example.apiarcamento.view.fragments.RegFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
