@@ -16,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnSignUp = findViewById(R.id.btn_registrar);
-
+        //Intent estacionamiento = new Intent(this, activity_estacionamiento.class);
+        //startActivity(estacionamiento);
         btnSignUp.setOnClickListener(view -> {
-            Intent registrarse = new Intent(this, signup.class);
+            Intent registrarse = new Intent(this, activity_estacionamiento.class);
             startActivity(registrarse);
         });
 
