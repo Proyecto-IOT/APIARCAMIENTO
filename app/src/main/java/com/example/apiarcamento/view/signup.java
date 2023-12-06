@@ -34,7 +34,7 @@ import retrofit2.http.Body;
 
 public class signup extends AppCompatActivity {
 
-    EditText etName,etLastName, etEmail, etPassword;
+    EditText etName,etLastName,etMSurname, etGender, etEmail, etPassword;
     Button Registrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         etName=findViewById(R.id.nameField);
         etLastName=findViewById(R.id.usernameField);
+        etMSurname=findViewById(R.id.MSurnameField);
         etEmail=findViewById(R.id.emailField);
         etPassword=findViewById(R.id.passwordField);
         Registrar=findViewById(R.id.btn_login);
@@ -58,12 +59,19 @@ public class signup extends AppCompatActivity {
 
 
                 String nombre = etName.getText().toString();
+                String last_name = etLastName.getText().toString();
+                String mothersurname = etMSurname.getText().toString();
+                String gender = etName.getText().toString();
                 String email = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
-                User usuario = new User(nombre, email,pass);
+                User usuario = new User(nombre,last_name,mothersurname,gender, email,pass);
                 usuario.setName(nombre);
+                usuario.setLast_name(last_name);
+                usuario.setMother_surname(mothersurname);
+                usuario.setGender(gender);
                 usuario.setEmail(email);
                 usuario.setPassword(pass);
+
 
                 //Log.e("DEBUG", "Nombre: " + usuario.getName());
                 //Log.e("DEBUG", "Email: " + usuario.getEmail());

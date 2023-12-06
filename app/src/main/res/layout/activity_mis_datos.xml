@@ -81,7 +81,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/usernameField2"
+                    android:id="@+id/mother_surname"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_toEndOf="@id/usernameField"
