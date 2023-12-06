@@ -3,9 +3,12 @@ package com.example.apiarcamento.models;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
-    private String name;
-    private String email;
-    private String password;
+    @SerializedName("name")
+    public String name;
+    @SerializedName("email")
+    public String email;
+    @SerializedName("password")
+    public String password;
 
     public User(String name, String email, String password) {
         this.name = name;
