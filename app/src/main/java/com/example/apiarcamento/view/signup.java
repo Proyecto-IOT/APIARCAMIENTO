@@ -81,29 +81,7 @@ public class signup extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if(response.isSuccessful()){
-
-                            String respuesta = response.body().toString();
-                            try {
-
-
-                                JSONObject jsonObject = new JSONObject(respuesta);
-                                String idjson = jsonObject.getString("id");
-
-                                SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-
-                                // Edita las SharedPreferences
-                                SharedPreferences.Editor editor = sharedPref.edit();
-
-                                // Almacena el valor id
-                                editor.putString("id", idjson);
-
-                                // Aplica los cambios
-                                editor.apply();
-
-                                startActivity(Login);
-                            }catch (JSONException e){
-
-                            }
+                            startActivity(Login);
                         }
                     }
 
