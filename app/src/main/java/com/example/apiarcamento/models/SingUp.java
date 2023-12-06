@@ -15,6 +15,9 @@ public interface SingUp {
     @POST("api/login/")
     Call<User> login(@Body User usuario);
 
-    @GET("api/logout/")
+    @POST("api/logout/")
     Call<User> logout();
+
+    @GET("api/user-info/")
+    Call<User> edit();
 }
