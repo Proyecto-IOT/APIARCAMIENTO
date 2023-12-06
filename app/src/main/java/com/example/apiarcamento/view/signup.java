@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
@@ -35,7 +36,7 @@ public class signup extends AppCompatActivity {
 
         Intent Login=new Intent(this, MainActivity.class);
 
-        Button btnSignIn = findViewById(R.id.btn_iniciar);
+        TextView btnSignIn = findViewById(R.id.textNoCuenta);
 
         btnSignIn.setOnClickListener(view -> {
             Intent iniciarS = new Intent(this, MainActivity.class);
