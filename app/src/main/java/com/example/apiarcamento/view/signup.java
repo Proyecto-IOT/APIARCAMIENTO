@@ -11,8 +11,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.apiarcamento.R;
@@ -24,6 +26,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +40,7 @@ public class signup extends AppCompatActivity {
 
     EditText etName,etLastName,etMSurname, etGender, etEmail, etPassword;
     Button Registrar;
+    Spinner spGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +51,23 @@ public class signup extends AppCompatActivity {
         etEmail=findViewById(R.id.emailField);
         etPassword=findViewById(R.id.passwordField);
         Registrar=findViewById(R.id.btn_login);
+        spGender=findViewById(R.id.genderSpinner);
 
         Intent Login=new Intent(this, MainActivity.class);
 
         Intent nojala=new Intent(this, Home.class);
 
+
+        List<String> items = new ArrayList<>();
+        items.add("Selecciona:");
+        items.add("Masculino");
+        items.add("Femenino");
+        items.add("39 tipos de gays");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spGender.setAdapter(adapter);
 
         Registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +78,7 @@ public class signup extends AppCompatActivity {
                 String nombre = etName.getText().toString();
                 String last_name = etLastName.getText().toString();
                 String mothersurname = etMSurname.getText().toString();
-                String gender = etName.getText().toString();
+                String gender = spGender.getSelectedItem().toString();
                 String email = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 User usuario = new User(nombre,last_name,mothersurname,gender, email,pass);
@@ -78,8 +95,8 @@ public class signup extends AppCompatActivity {
                 //Log.e("DEBUG", "Password: " + usuario.getPassword());
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        //.baseUrl("http://127.0.0.1:8000/")
-                        .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
+                        .baseUrl("http://10.0.2.2:8000/")
+                        //.baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);
