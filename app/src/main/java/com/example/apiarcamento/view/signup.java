@@ -90,12 +90,16 @@ public class signup extends AppCompatActivity {
                 usuario.setPassword(pass);
 
 
-                //Log.e("DEBUG", "Nombre: " + usuario.getName());
-                //Log.e("DEBUG", "Email: " + usuario.getEmail());
-                //Log.e("DEBUG", "Password: " + usuario.getPassword());
+                Log.e("DEBUG", "Nombre: " + usuario.getName());
+                Log.e("DEBUG", "Apellido: " + usuario.getLast_name());
+                Log.e("DEBUG", "Mother: " + usuario.getMother_surname());
+                Log.e("DEBUG", "gender: " + usuario.getGender());
+                Log.e("DEBUG", "Email: " + usuario.getEmail());
+                Log.e("DEBUG", "Password: " + usuario.getPassword());
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8000/")
+                        .baseUrl("http://10.0.2.2:8000/api/v3/")
+                        //.baseUrl("http://192.168.56.1:8000/api/v3/")
                         //.baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();

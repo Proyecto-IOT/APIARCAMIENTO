@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface SingUp {
-    @GET("api/register/")
+    @POST("user/register/")
     Call<User> enviarDatos(@Body User usuario);
 
     @POST("api/login/")
