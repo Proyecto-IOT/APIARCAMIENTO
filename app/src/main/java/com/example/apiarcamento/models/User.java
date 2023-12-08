@@ -33,6 +33,14 @@ public class User {
         this.password = password;
     }
 
+    public User(String name, String last_name, String mother_surname, String gender, String password) {
+        this.name = name;
+        this.last_name = last_name;
+        this.mother_surname = mother_surname;
+        this.gender = gender;
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }

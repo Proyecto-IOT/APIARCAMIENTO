@@ -42,7 +42,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Retrofit retrofit = new Retrofit.Builder()
                         //.baseUrl("http://127.0.0.1:8000/")
-                        .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
+                        .baseUrl("http://192.168.1.115:8000/api/v3/")
+                        //.baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
@@ -27,6 +28,7 @@ public class MisDatos extends AppCompatActivity {
 
     EditText etName,etLastName, etMotherSurname, etEmail, etPassword;
     Button Save;
+    Spinner spGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +39,8 @@ public class MisDatos extends AppCompatActivity {
         etEmail=findViewById(R.id.emailField);
         etPassword=findViewById(R.id.passwordField);
         Save=findViewById(R.id.btn_login);
-        etMotherSurname=findViewById(R.id.mother_surname);
-
+        etMotherSurname=findViewById(R.id.MSurnameField);
+        spGender=findViewById(R.id.genderSpinner);
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://127.0.0.1:8000/")
                 .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
@@ -55,14 +57,16 @@ public class MisDatos extends AppCompatActivity {
                     String respuesta = response.body().toString();
                     try {
                         JSONObject jsonObject = new JSONObject(respuesta);
-                        String namejson = jsonObject.getString("id");
-                        String appajson = jsonObject.getString("id");
-                        String apmajson = jsonObject.getString("id");
-                        String emailjson = jsonObject.getString("id");
+                        String namejson = jsonObject.getString("name");
+                        String appajson = jsonObject.getString("last_name");
+                        String apmajson = jsonObject.getString("mother_surname");
+                        String genderjson = jsonObject.getString("gender");
+                        String emailjson = jsonObject.getString("email");
 
                         etName.setText(namejson);
                         etLastName.setText(appajson);
                         etMotherSurname.setText(apmajson);
+                        //spGender.set
                         etEmail.setText(emailjson);
                     }catch(JSONException e) {
                         //startActivity(Intentlogout);
@@ -82,7 +86,6 @@ public class MisDatos extends AppCompatActivity {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
             }

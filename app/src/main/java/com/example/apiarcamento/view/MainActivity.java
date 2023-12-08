@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnSignUp = findViewById(R.id.btn_registrar);
         Button btnLogIn = findViewById(R.id.btn_login);
 
-        etPass= findViewById(R.id.emailField);
-        etEmail=findViewById(R.id.passwordField);
+         etEmail= findViewById(R.id.emailField);
+    etPass=findViewById(R.id.passwordField);
 
         btnSignUp.setOnClickListener(view -> {
             Intent registrarse = new Intent(this, signup.class);
@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
             User usuario = new User(email,pass);
             usuario.setEmail(email);
             usuario.setPassword(pass);
+            Log.e("DEBUG", "Onclck: " );
 
             Retrofit retrofit = new Retrofit.Builder()
-                    //.baseUrl("http://127.0.0.1:8000/")
-                    .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
+                    .baseUrl("http://192.168.1.115:8000/api/v3/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             SingUp singupinterface=retrofit.create(SingUp.class);
@@ -63,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
             userCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
+                    Log.e("DEBUG", "onresponse: " );
                     if(response.isSuccessful()){
-
+                        Log.e("DEBUG", "successful: " );
                         String respuesta = response.body().toString();
                         try {
                             JSONObject jsonObject = new JSONObject(respuesta);
@@ -81,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
                             // Aplica los cambios
                             editor.apply();
 
-                            startActivity(Iniciar);
 
                         }catch (JSONException e){
 
                         }
+                        startActivity(Iniciar);
                     }
                 }
 

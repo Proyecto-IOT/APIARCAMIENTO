@@ -12,10 +12,10 @@ public interface SingUp {
     @POST("user/register/")
     Call<User> enviarDatos(@Body User usuario);
 
-    @POST("api/login/")
+    @POST("user/login/")
     Call<User> login(@Body User usuario);
 
-    @POST("api/logout/")
+    @POST("user/logout/")
     Call<User> logout();
 
     @GET("api/user-info/")
