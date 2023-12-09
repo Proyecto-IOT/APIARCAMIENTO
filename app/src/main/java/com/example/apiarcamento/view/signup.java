@@ -81,18 +81,18 @@ public class signup extends AppCompatActivity {
                 String gender = spGender.getSelectedItem().toString();
                 String email = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
-                User usuario = new User(nombre,last_name,mothersurname,gender, email,pass);
+                User usuario = new User();
                 usuario.setName(nombre);
-                usuario.setLast_name(last_name);
-                usuario.setMother_surname(mothersurname);
+                usuario.setLastName(last_name);
+                usuario.setMotherSurname(mothersurname);
                 usuario.setGender(gender);
                 usuario.setEmail(email);
                 usuario.setPassword(pass);
 
 
                 Log.e("DEBUG", "Nombre: " + usuario.getName());
-                Log.e("DEBUG", "Apellido: " + usuario.getLast_name());
-                Log.e("DEBUG", "Mother: " + usuario.getMother_surname());
+                Log.e("DEBUG", "Apellido: " + usuario.getLastName());
+                Log.e("DEBUG", "Mother: " + usuario.getMotherSurname());
                 Log.e("DEBUG", "gender: " + usuario.getGender());
                 Log.e("DEBUG", "Email: " + usuario.getEmail());
                 Log.e("DEBUG", "Password: " + usuario.getPassword());
@@ -108,6 +108,7 @@ public class signup extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if(response.isSuccessful()){
+
                             startActivity(Login);
                         }
                     }

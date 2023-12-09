@@ -3,17 +3,19 @@ package com.example.apiarcamento.models;
 
 import android.util.Log;
 
+import com.example.apiarcamento.models.User;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface SingUp {
-    @POST("user/register/")
+    @POST("api/v3/user/register/")
     Call<User> enviarDatos(@Body User usuario);
+    @POST("api/v3/user/login/")
+    Call<User>  login(@Body User usuario);
 
-    @POST("user/login/")
-    Call<User> login(@Body User usuario);
 
     @POST("user/logout/")
     Call<User> logout();

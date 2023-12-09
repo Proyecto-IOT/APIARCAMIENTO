@@ -13,10 +13,7 @@ import android.widget.EditText;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
-import com.example.apiarcamento.view.signup;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,13 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
             String email = etEmail.getText().toString();
             String pass = etPass.getText().toString();
-            User usuario = new User(email,pass);
+            User usuario = new User();
+
             usuario.setEmail(email);
             usuario.setPassword(pass);
             Log.e("DEBUG", "Onclck: " );
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.115:8000/api/v3/")
+                    .baseUrl("http://192.168.1.115:8000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             SingUp singupinterface=retrofit.create(SingUp.class);
@@ -65,27 +63,23 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     Log.e("DEBUG", "onresponse: " );
                     if(response.isSuccessful()){
-                        Log.e("DEBUG", "successful: " );
-                        String respuesta = response.body().toString();
-                        try {
-                            JSONObject jsonObject = new JSONObject(respuesta);
-                            String idjson = jsonObject.getString("id");
 
-                            SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        User userid = response.body();
+                        int idjson= userid.getUserid();
+                        Log.d("DEBUG", "User ID: " + idjson);
+                        Log.d("DEBUG", "User ID: " +  response.code());
 
-                            // Edita las SharedPreferences
-                            SharedPreferences.Editor editor = sharedPref.edit();
+                        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-                            // Almacena el valor id
-                            editor.putString("id", idjson);
+                        // Edita las SharedPreferences
+                        SharedPreferences.Editor editor = sharedPref.edit();
 
-                            // Aplica los cambios
-                            editor.apply();
+                        // Almacena el valor id
+                        editor.putInt("id", idjson);
 
+                        // Aplica los cambios
+                        editor.apply();
 
-                        }catch (JSONException e){
-
-                        }
                         startActivity(Iniciar);
                     }
                 }

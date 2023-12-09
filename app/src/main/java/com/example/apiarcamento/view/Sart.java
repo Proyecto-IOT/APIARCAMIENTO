@@ -30,11 +30,11 @@ public class Sart extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+
                 SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                int id = sharedPref.getInt("id", 0);
 
-                String id = sharedPref.getString("id", null);
-
-                if (id != null) {
+                if (id != 0) {
                     startActivity(home);
                 } else {
                     startActivity(main);

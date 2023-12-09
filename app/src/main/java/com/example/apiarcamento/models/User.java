@@ -1,85 +1,59 @@
-package com.example.apiarcamento.models;
+// Loginjson.java
 
-import com.google.gson.annotations.SerializedName;
+// YApi QuickType插件生成，具体参考文档:https://plugins.jetbrains.com/plugin/18847-yapi-quicktype/documentation
+
+package com.example.apiarcamento.models;
+import java.time.OffsetDateTime;
+
+// Credentials.java
+
+// YApi QuickType插件生成，具体参考文档:https://plugins.jetbrains.com/plugin/18847-yapi-quicktype/documentation
+
+// User.java
+
+// YApi QuickType插件生成，具体参考文档:https://plugins.jetbrains.com/plugin/18847-yapi-quicktype/documentation
+
+//import java.time.OffsetDateTime;
 
 public class User {
-    @SerializedName("name")
-    public String name;
-    @SerializedName("last_name")
-    public String last_name;
-    @SerializedName("mother_surname")
-    public String mother_surname;
-    @SerializedName("gender")
-    public String gender;
-    @SerializedName("email")
-    public String email;
-    @SerializedName("password")
+    private int is_active;
+    private String gender;
+    private OffsetDateTime updated_at;
+    private int user_id;
+    private String name;
+    private String last_name;
+    private String mother_surname;
+    private OffsetDateTime created_at;
+    private String email;
     public String password;
 
 
-    public User(String name, String last_name, String mother_surname, String gender, String email, String password) {
-        this.name = name;
-        this.last_name = last_name;
-        this.mother_surname = mother_surname;
-        this.gender = gender;
-        this.email = email;
-        this.password = password;
-    }
+    public int getIsActive() { return is_active; }
+    public void setIsActive(int value) { this.is_active = value; }
 
+    public String getGender() { return gender; }
+    public void setGender(String value) { this.gender = value; }
 
+    public OffsetDateTime getUpdatedAt() { return updated_at; }
+    public void setUpdatedAt(OffsetDateTime value) { this.updated_at = value; }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+    public int getUserid() { return user_id; }
+    public void setUserid(int value) { this.user_id = value; }
 
-    public User(String name, String last_name, String mother_surname, String gender, String password) {
-        this.name = name;
-        this.last_name = last_name;
-        this.mother_surname = mother_surname;
-        this.gender = gender;
-        this.password = password;
-    }
+    public String getName() { return name; }
+    public void setName(String value) { this.name = value; }
 
-    public String getName() {
-        return name;
-    }
+    public String getLastName() { return last_name; }
+    public void setLastName(String value) { this.last_name = value; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getMotherSurname() { return mother_surname; }
+    public void setMotherSurname(String value) { this.mother_surname = value; }
 
-    public String getLast_name() {
-        return last_name;
-    }
+    public OffsetDateTime getCreatedAt() { return created_at; }
+    public void setCreatedAt(OffsetDateTime value) { this.created_at = value; }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getMother_surname() {
-        return mother_surname;
-    }
-
-    public void setMother_surname(String mother_surname) {
-        this.mother_surname = mother_surname;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String value) { this.email = value; }
 
     public String getPassword() {
         return password;
@@ -87,5 +61,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String toString() {
+        return "User{" +
+                "isActive=" + is_active +
+                ", gender='" + gender + '\'' +
+                ", updatedAt=" + updated_at +
+                ", userid=" + user_id +
+                ", name='" + name + '\'' +
+                ", lastName='" + last_name + '\'' +
+                ", motherSurname='" + mother_surname + '\'' +
+                ", createdAt=" + created_at +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+    public User() {
+        // Constructor predeterminado sin argumentos
     }
 }
