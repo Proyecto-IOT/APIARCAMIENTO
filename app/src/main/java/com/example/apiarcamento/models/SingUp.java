@@ -8,6 +8,7 @@ import com.example.apiarcamento.models.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface SingUp {
@@ -16,7 +17,7 @@ public interface SingUp {
     @POST("api/v3/user/login/")
     Call<User>  login(@Body User usuario);
     @POST("api/v3/user/logout/")
-    Call<User> logout();
+    Call<User> logout(@Header("Authorization") String token);
 
     @GET("api/user-info/")
     Call<User> edit();

@@ -61,15 +61,14 @@ public class MainActivity extends AppCompatActivity {
             userCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    Log.e("DEBUG", "onresponse: " );
                     if(response.isSuccessful()){
 
                         User userid = response.body();
                         int idjson= userid.getUserid();
                         String tokenjson= userid.getToken();
                         Log.d("DEBUG", "User ID: " + idjson);
-                        Log.d("DEBUG", "User token: " + tokenjson);
-                        Log.d("DEBUG", "User ID: " +  response.code());
+                        Log.d("TOKENN", tokenjson);
+                        //Log.d("DEBUG", "User ID: " +  response.code());
 
                         SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 

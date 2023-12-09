@@ -40,12 +40,18 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                String token = sharedPref.getString("token", null);
+
+                Log.d("TOKENN", token);
+
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://192.168.1.115:8000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);
-                Call<User> userCall=singupinterface.logout();
+                Call<User> userCall=singupinterface.logout("Bearer "+token);
 
                 userCall.enqueue(new Callback<User>() {
                     @Override
