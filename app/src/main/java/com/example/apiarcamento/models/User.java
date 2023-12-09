@@ -20,6 +20,8 @@ public class User {
     private String gender;
     private OffsetDateTime updated_at;
     private int user_id;
+    private String token;
+
     private String name;
     private String last_name;
     private String mother_surname;
@@ -62,6 +64,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String toString() {
         return "User{" +
                 "isActive=" + is_active +

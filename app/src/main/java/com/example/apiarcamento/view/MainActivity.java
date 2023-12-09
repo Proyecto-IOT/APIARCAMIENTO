@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                         User userid = response.body();
                         int idjson= userid.getUserid();
+                        String tokenjson= userid.getToken();
                         Log.d("DEBUG", "User ID: " + idjson);
+                        Log.d("DEBUG", "User token: " + tokenjson);
                         Log.d("DEBUG", "User ID: " +  response.code());
 
                         SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // Almacena el valor id
                         editor.putInt("id", idjson);
+                        editor.putString("token", tokenjson);
 
                         // Aplica los cambios
                         editor.apply();
