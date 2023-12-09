@@ -41,13 +41,17 @@ public class MisDatos extends AppCompatActivity {
         Save=findViewById(R.id.btn_login);
         etMotherSurname=findViewById(R.id.MSurnameField);
         spGender=findViewById(R.id.genderSpinner);
+
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String token = sharedPref.getString("token", null);
+
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://127.0.0.1:8000/")
                 .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SingUp singupinterface=retrofit.create(SingUp.class);
-        Call<User> userCall=singupinterface.edit();
+        Call<User> userCall=singupinterface.edit("Bearer "+token);
 
         userCall.enqueue(new Callback<User>() {
             @Override

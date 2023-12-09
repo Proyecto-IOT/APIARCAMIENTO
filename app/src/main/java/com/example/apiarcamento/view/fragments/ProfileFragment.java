@@ -27,25 +27,51 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ProfileFragment extends Fragment {
-    TextView logout;
+    TextView logout, username;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String token = sharedPref.getString("token", null);
+
         logout=vista.findViewById(R.id.tvLogout);
+        username=vista.findViewById(R.id.username);
 
         Intent Intentlogout=new Intent(getContext(), MainActivity.class);
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.115:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        SingUp singupinterface=retrofit.create(SingUp.class);
+        Call<User> userCall=singupinterface.edit("Bearer "+token);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
 
+                    User userid = response.body();
+                    String namejson= userid.getName();
+                    Log.d("DEBUG", "User ID: " + namejson);
+                    username.setText(namejson);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("RetrofitError", "Error en la llamada a la API", t);
+
+                //startActivity(nojala);
+
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                String token = sharedPref.getString("token", null);
-
                 Log.d("TOKENN", token);
-
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://192.168.1.115:8000/")
                         .addConverterFactory(GsonConverterFactory.create())

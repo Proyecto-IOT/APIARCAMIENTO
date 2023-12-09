@@ -19,6 +19,6 @@ public interface SingUp {
     @POST("api/v3/user/logout/")
     Call<User> logout(@Header("Authorization") String token);
 
-    @GET("api/user-info/")
-    Call<User> edit();
+    @GET("api/v3/user/user-info/")
+    Call<User> edit(@Header("Authorization") String token);
 }
