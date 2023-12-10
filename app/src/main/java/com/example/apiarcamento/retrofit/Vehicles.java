@@ -7,8 +7,12 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 
 public interface Vehicles {
-    @GET("api/v3/vehicle/search/")
-    Call<Vehicle> search(@Body int user_id);
+    @POST("api/v3/vehicle/search/")
+    Call<Vehicle> search(@Body User user_id);
+
+    @POST("api/v3/vehicle/register/")
+    Call<Vehicle> register(@Body Vehicle.Result vehicle);
 }

@@ -1,15 +1,20 @@
 package com.example.apiarcamento.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.adapter.VehicleAdapter;
+import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.Vehicles;
 
@@ -21,28 +26,35 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MisVehicles extends AppCompatActivity {
 
+    ConstraintLayout add;
     RecyclerView rvVehicle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_vehicles);
 
+        add=findViewById(R.id.clAgregar);
         rvVehicle=findViewById(R.id.recycler);
+
+        Intent IntentAdd=new Intent(this, Add_vehicle.class);
 
         SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int user_id = sharedPref.getInt("id", 0);
-
+        User usuario = new User();
+        usuario.setUserid(user_id);
         Retrofit rf=new Retrofit.Builder()
                 .baseUrl("http://192.168.1.115:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Vehicles vehiclesInterfaz=rf.create(Vehicles.class);
-        Call<Vehicle> Call=vehiclesInterfaz.search(user_id);
-
+        Log.e("DEBUG", "successful: " );
+        Call<Vehicle> Call=vehiclesInterfaz.search(usuario);
+        Log.e("DEBUG", "successful: " );
         Call.enqueue(new Callback<Vehicle>() {
             @Override
             public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
                 if(response.isSuccessful()){
+                    Log.e("DEBUG", "successfulLLL: " );
                     rvVehicle.setAdapter(new VehicleAdapter(response.body().getData()));
                     rvVehicle.setLayoutManager(new LinearLayoutManager(MisVehicles.this));
                     rvVehicle.setHasFixedSize(true);
@@ -52,6 +64,13 @@ public class MisVehicles extends AppCompatActivity {
             @Override
             public void onFailure(Call<Vehicle> call, Throwable t) {
 
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(IntentAdd);
             }
         });
     }

@@ -17,19 +17,19 @@ public class Vehicle {
         this.data = data;
     }
 
-    public class Result {
-        private String licensePlate;
+    public static class Result {
+        private String license_plate;
         private String color;
         private OffsetDateTime updatedAt;
-        private long userid;
+        private long user_id;
         private OffsetDateTime createdAt;
         private String model;
         private String brand;
-        private long vehicleid;
+        private long vehicle_id;
 
 
-        public String getLicensePlate() { return licensePlate; }
-        public void setLicensePlate(String value) { this.licensePlate = value; }
+        public String getLicensePlate() { return license_plate; }
+        public void setLicensePlate(String value) { this.license_plate = value; }
 
         public String getColor() { return color; }
         public void setColor(String value) { this.color = value; }
@@ -37,8 +37,8 @@ public class Vehicle {
         public OffsetDateTime getUpdatedAt() { return updatedAt; }
         public void setUpdatedAt(OffsetDateTime value) { this.updatedAt = value; }
 
-        public long getUserid() { return userid; }
-        public void setUserid(long value) { this.userid = value; }
+        public long getUserid() { return user_id; }
+        public void setUserid(long value) { this.user_id = value; }
 
         public OffsetDateTime getCreatedAt() { return createdAt; }
         public void setCreatedAt(OffsetDateTime value) { this.createdAt = value; }
@@ -49,7 +49,7 @@ public class Vehicle {
         public String getBrand() { return brand; }
         public void setBrand(String value) { this.brand = value; }
 
-        public long getVehicleid() { return vehicleid; }
-        public void setVehicleid(long value) { this.vehicleid = value; }
+        public long getVehicleid() { return vehicle_id; }
+        public void setVehicleid(long value) { this.vehicle_id = value; }
     }
 }
