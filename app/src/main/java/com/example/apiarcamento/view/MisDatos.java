@@ -3,10 +3,12 @@ package com.example.apiarcamento.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,6 +19,10 @@ import com.example.apiarcamento.models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,13 +47,16 @@ public class MisDatos extends AppCompatActivity {
         Save=findViewById(R.id.btn_login);
         etMotherSurname=findViewById(R.id.MSurnameField);
         spGender=findViewById(R.id.genderSpinner);
+        Context context = this;
+
+        Intent home=new Intent(this, Home.class);
+
 
         SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPref.getString("token", null);
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://127.0.0.1:8000/")
-                .baseUrl("https://pg50s515-8000.usw3.devtunnels.ms/")
+                .baseUrl("http://192.168.1.115:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SingUp singupinterface=retrofit.create(SingUp.class);
@@ -58,23 +67,26 @@ public class MisDatos extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
 
-                    String respuesta = response.body().toString();
-                    try {
-                        JSONObject jsonObject = new JSONObject(respuesta);
-                        String namejson = jsonObject.getString("name");
-                        String appajson = jsonObject.getString("last_name");
-                        String apmajson = jsonObject.getString("mother_surname");
-                        String genderjson = jsonObject.getString("gender");
-                        String emailjson = jsonObject.getString("email");
+                    User respuesta = response.body();
 
-                        etName.setText(namejson);
-                        etLastName.setText(appajson);
-                        etMotherSurname.setText(apmajson);
-                        //spGender.set
-                        etEmail.setText(emailjson);
-                    }catch(JSONException e) {
-                        //startActivity(Intentlogout);
-                    }
+                    String namejson= respuesta.getName();
+                    Log.d("DEBUG", "User ID: " + namejson);
+                    String appajson= respuesta.getLastName();
+                    String apmajson= respuesta.getMotherSurname();
+                    String genderjson= respuesta.getGender();
+                    String correojson= respuesta.getEmail();
+
+                    etName.setText(namejson);
+                    etLastName.setText(appajson);
+                    etMotherSurname.setText(apmajson);
+                    etEmail.setText(correojson);
+
+                    List<String> generos = new ArrayList<>(Arrays.asList("Masculino", "Femenino", "Otro"));
+                    generos.remove(genderjson);
+                    generos.add(0, genderjson);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, generos);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spGender.setAdapter(adapter);
                 }
             }
 
@@ -91,6 +103,57 @@ public class MisDatos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String nombre = etName.getText().toString();
+                String last_name = etLastName.getText().toString();
+                String mothersurname = etMotherSurname.getText().toString();
+                String gender = spGender.getSelectedItem().toString();
+                String email = etEmail.getText().toString();
+                String pass = etPassword.getText().toString();
+
+                SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                int id = sharedPref.getInt("id", 0);
+
+                User usuario = new User();
+                usuario.setUserid(id);
+                usuario.setName(nombre);
+                usuario.setLastName(last_name);
+                usuario.setMotherSurname(mothersurname);
+                usuario.setGender(gender);
+                usuario.setEmail(email);
+                usuario.setPassword(pass);
+
+                Log.e("DEBUG", "id: " + usuario.getUserid());
+                Log.e("DEBUG", "Nombre: " + usuario.getName());
+                Log.e("DEBUG", "Apellido: " + usuario.getLastName());
+                Log.e("DEBUG", "Mother: " + usuario.getMotherSurname());
+                Log.e("DEBUG", "gender: " + usuario.getGender());
+                Log.e("DEBUG", "Email: " + usuario.getEmail());
+                Log.e("DEBUG", "Password: " + usuario.getPassword());
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://192.168.1.115:8000/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                SingUp singupinterface=retrofit.create(SingUp.class);
+                Call<User> userCall=singupinterface.editarDatos(usuario);
+
+                userCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if(response.isSuccessful()){
+
+                            startActivity(home);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Log.e("RetrofitError", "Error en la llamada a la API", t);
+
+                        //startActivity(nojala);
+
+                    }
+                });
 
             }
         });

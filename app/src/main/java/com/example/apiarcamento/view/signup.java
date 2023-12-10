@@ -98,7 +98,7 @@ public class signup extends AppCompatActivity {
                 Log.e("DEBUG", "Password: " + usuario.getPassword());
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.115:8000/api/v3/")
+                        .baseUrl("http://192.168.1.115:8000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);
