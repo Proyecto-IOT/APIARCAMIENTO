@@ -19,6 +19,7 @@ import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.view.MainActivity;
 import com.example.apiarcamento.view.MisDatos;
+import com.example.apiarcamento.view.MisVehicles;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ProfileFragment extends Fragment {
-    TextView logout, username, misdatos;
+    TextView logout, username, misdatos, misve;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_profile, container, false);
@@ -36,12 +37,14 @@ public class ProfileFragment extends Fragment {
         SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPref.getString("token", null);
 
+        misve=vista.findViewById(R.id.tvMV);
         misdatos=vista.findViewById(R.id.tvMisDatos);
         logout=vista.findViewById(R.id.tvLogout);
         username=vista.findViewById(R.id.username);
 
         Intent Intentlogout=new Intent(getContext(), MainActivity.class);
         Intent misdatoss=new Intent(getContext(), MisDatos.class);
+        Intent IntentMV=new Intent(getContext(), MisVehicles.class);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.115:8000/")
@@ -116,6 +119,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(misdatoss);
+            }
+        });
+        misve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(IntentMV);
             }
         });
         return vista;

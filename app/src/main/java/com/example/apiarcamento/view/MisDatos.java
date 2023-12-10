@@ -54,6 +54,7 @@ public class MisDatos extends AppCompatActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPref.getString("token", null);
+        Log.d("DEBUG", "User ID: " + token);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.115:8000/")
@@ -81,7 +82,7 @@ public class MisDatos extends AppCompatActivity {
                     etMotherSurname.setText(apmajson);
                     etEmail.setText(correojson);
 
-                    List<String> generos = new ArrayList<>(Arrays.asList("Masculino", "Femenino", "Otro"));
+                    List<String> generos = new ArrayList<>(Arrays.asList("Masculino", "Femenino", "39 tipos de gays"));
                     generos.remove(genderjson);
                     generos.add(0, genderjson);
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, generos);
