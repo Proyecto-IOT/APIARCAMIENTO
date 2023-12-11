@@ -16,20 +16,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido!"
-            android:layout_gravity="center"
-            android:textSize="26dp"
+            android:textSize="32sp"
+            android:fontFamily="@font/osval"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="55dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/homedeco_1"
+            android:layout_toStartOf="@id/textoBienvenida"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="5dp"
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:lottie_rawRes="@raw/homanim3"
+            android:layout_below="@id/textoBienvenida"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
 
         <!-- BOTON ABRIR -->
         <LinearLayout
             android:id="@+id/contenedordebtn1"
             android:layout_width="250dp"
             android:layout_height="100dp"
+            android:layout_below="@id/animationViewHome"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textoBienvenida"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="20dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnHome1"
@@ -76,8 +95,8 @@
             android:id="@+id/contenedordebtn2"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/contenedordebtn1"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -126,8 +145,8 @@
             android:id="@+id/contenedordebtn3"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/contenedordebtn2"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp">
 
             <com.google.android.material.card.MaterialCardView
