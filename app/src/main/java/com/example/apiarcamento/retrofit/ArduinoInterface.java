@@ -9,9 +9,9 @@ import retrofit2.http.POST;
 
 public interface ArduinoInterface {
     @POST("api/v3/arduino/enter/")
-    Call<Vehicle> enter(@Body User user_id);
+    Call<Vehicle> enter();
     @POST("api/v3/arduino/exit/")
-    Call<Vehicle> exit(@Body User user_id);
+    Call<Vehicle> exit();
     @POST("api/v3/arduino/park/")
     Call<Vehicle> park(@Body User user_id);
 
