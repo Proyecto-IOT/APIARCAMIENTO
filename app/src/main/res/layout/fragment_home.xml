@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,6 +12,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textoBienvenida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido!"
@@ -18,8 +20,155 @@
             android:textSize="26dp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="55dp"/>
 
+        <!-- BOTON ABRIR -->
+        <LinearLayout
+            android:id="@+id/contenedordebtn1"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/textoBienvenida"
+            android:layout_marginTop="80dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnHome1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:strokeColor="@color/md_theme_light_secondary"
+                app:cardElevation="@dimen/cardview_default_elevation"
+                app:cardBackgroundColor="@color/md_theme_dark_tertiaryContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contenedorCard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iconobtnAbrir"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="35dp"
+                        android:src="@drawable/abrir"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard1"
+                        app:layout_constraintStart_toStartOf="@id/contenedorCard1"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Abrir pluma"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/iconobtnAbrir"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard1"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard1"
+                        android:layout_marginStart="10dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- BOTON CERRAR -->
+        <LinearLayout
+            android:id="@+id/contenedordebtn2"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/contenedordebtn1"
+            android:layout_marginTop="30dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnHome2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:strokeColor="@color/md_theme_light_secondary"
+                app:cardElevation="@dimen/cardview_default_elevation"
+                app:cardBackgroundColor="@color/md_theme_dark_tertiaryContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contenedorCard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iconobtnCerrar"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="35dp"
+                        android:src="@drawable/cerrar"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard2"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard2"
+                        app:layout_constraintStart_toStartOf="@id/contenedorCard2"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cerrar pluma"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard2"
+                        app:layout_constraintStart_toEndOf="@id/iconobtnCerrar"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard2"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- BOTON ESTACIONAMIENTO -->
+        <LinearLayout
+            android:id="@+id/contenedordebtn3"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/contenedordebtn2"
+            android:layout_marginTop="30dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnHome3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:strokeColor="@color/md_theme_light_secondary"
+                app:cardElevation="@dimen/cardview_default_elevation"
+                app:cardBackgroundColor="@color/md_theme_dark_tertiaryContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contenedorCard3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iconobtnEstacionamiento"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="35dp"
+                        android:src="@drawable/parking_area"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard3"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard3"
+                        app:layout_constraintStart_toStartOf="@id/contenedorCard3"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estacionamiento"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintTop_toTopOf="@id/contenedorCard3"
+                        app:layout_constraintBottom_toBottomOf="@id/contenedorCard3"
+                        app:layout_constraintStart_toEndOf="@id/iconobtnEstacionamiento"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
     </RelativeLayout>
-
 </FrameLayout>
