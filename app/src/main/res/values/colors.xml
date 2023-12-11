@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="loading">#B7000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mientras">#872341</color>
     <color name="seed">#67729D</color>
