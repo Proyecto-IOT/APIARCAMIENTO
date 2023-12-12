@@ -1,5 +1,6 @@
 package com.example.apiarcamento.retrofit;
 
+import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 
@@ -14,5 +15,6 @@ public interface ArduinoInterface {
     Call<Vehicle> exit();
     @POST("api/v3/arduino/park/")
     Call<Vehicle> park(@Body User user_id);
-
+    @POST("api/v3/arduino/refresh/")
+    Call<Spot> refresh();
 }

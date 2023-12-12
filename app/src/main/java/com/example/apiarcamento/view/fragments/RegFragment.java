@@ -14,6 +14,8 @@ public class RegFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_reg, container, false);
+        fragment fragmentt=new fragment();
+        fragmentt.show(getChildFragmentManager(), fragmentt.getTag());
         return vista;
     }
 }

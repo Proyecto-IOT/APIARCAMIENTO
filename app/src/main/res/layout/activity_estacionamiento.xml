@@ -40,6 +40,8 @@
 
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview1"
+                android:visibility="invisible"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -52,9 +54,10 @@
                     android:src="@drawable/car"/>
 
                 <TextView
+                    android:id="@+id/textViewValue1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C1"
+                    android:text="1"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -64,6 +67,7 @@
 
             <!-- Segundo elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview2"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -78,7 +82,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C2"
+                    android:text="2"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -88,6 +92,7 @@
 
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview3"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -102,7 +107,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C3"
+                    android:text="3"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -111,82 +116,12 @@
             </androidx.cardview.widget.CardView>
 
             <!-- Cuarto elemento -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="170dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/md_theme_dark_surface">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/car"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="C4"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/osval"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"/>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Quinto elemento -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="170dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/md_theme_dark_surface">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/car"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="C5"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/osval"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"/>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Sexto elemento -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="170dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/md_theme_dark_surface">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/car"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="C6"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/osval"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"/>
-            </androidx.cardview.widget.CardView>
-        </GridLayout>
+            </GridLayout>
 
         <!-- Espacio de las secciones -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="50dp"
             android:orientation="vertical"
             android:layout_marginTop="16dp"
             android:gravity="center">
@@ -210,20 +145,6 @@
                     app:layout_constraintStart_toStartOf="@id/contenedorSepSecciones"
                     app:layout_constraintEnd_toEndOf="@id/contenedorSepSecciones"/>
 
-                <TextView
-                    android:id="@+id/textSeccion2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Seccion 2"
-                    android:textSize="22sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/osval"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toBottomOf="@+id/textSeccion1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/contenedorSepSecciones"
-                    app:layout_constraintEnd_toEndOf="@id/contenedorSepSecciones"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -241,6 +162,7 @@
 
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview4"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -255,7 +177,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C7"
+                    android:text="4"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -265,6 +187,7 @@
 
             <!-- Segundo elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview5"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -279,7 +202,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C8"
+                    android:text="5"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -289,6 +212,7 @@
 
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview6"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -303,7 +227,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C9"
+                    android:text="6"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -313,6 +237,7 @@
 
             <!-- Cuarto elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview7"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -327,7 +252,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C10"
+                    android:text="7"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -337,6 +262,7 @@
 
             <!-- Quinto elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview8"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -351,7 +277,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C11"
+                    android:text="8"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -361,6 +287,7 @@
 
             <!-- Sexto elemento -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview9"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -375,7 +302,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="C12"
+                    android:text="9"
                     android:textColor="@color/white"
                     android:fontFamily="@font/osval"
                     android:textStyle="bold"
@@ -383,5 +310,93 @@
                     android:gravity="center_horizontal"/>
             </androidx.cardview.widget.CardView>
         </GridLayout>
+
+        <GridLayout
+            android:id="@+id/seccion3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="1"
+            android:padding="16dp"
+            android:layout_gravity="center">
+
+            <!-- Primer elemento -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview10"
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/md_theme_dark_surface">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/car"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="10"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/osval"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Segundo elemento -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview11"
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/md_theme_dark_surface">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/car"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="11"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/osval"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tercer elemento -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview12"
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/md_theme_dark_surface">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/car"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="12"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/osval"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Cuarto elemento -->
+        </GridLayout>
+
     </LinearLayout>
 </ScrollView>

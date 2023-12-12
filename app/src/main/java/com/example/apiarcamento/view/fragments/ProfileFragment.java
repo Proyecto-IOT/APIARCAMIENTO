@@ -59,12 +59,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
-
                     User userid = response.body();
                     String namejson= userid.getName();
                     Log.d("DEBUG", "User ID: " + namejson);
                     username.setText(namejson);
-
                 }
             }
 

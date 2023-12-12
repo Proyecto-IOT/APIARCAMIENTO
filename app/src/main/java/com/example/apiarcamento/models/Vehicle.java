@@ -6,9 +6,7 @@ import java.util.List;
 import java.time.OffsetDateTime;
 
 public class Vehicle {
-
     private List<Result> data;
-
     public List<Result> getData() {
         return data;
     }
