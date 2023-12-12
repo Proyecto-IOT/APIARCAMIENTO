@@ -21,12 +21,27 @@
 
     public class fragment extends BottomSheetDialogFragment {
 
+        private static final String ARG_SPOT = null;
+
+        // Otros métodos y variables de tu fragmento
+
+        public static fragment newInstance(int nombre) {
+            fragment fragment = new fragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SPOT, nombre);
+            fragment.setArguments(args);
+            return fragment;
+        }
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_fragment, container, false);
 
             Button btnAceptar = view.findViewById(R.id.btnAceptar);
+
+            int valorEntero = getArguments().getInt(ARG_SPOT);
+
+
 
             btnAceptar.setOnClickListener(new View.OnClickListener() {
                 @Override

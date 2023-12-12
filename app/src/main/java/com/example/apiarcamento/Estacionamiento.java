@@ -167,9 +167,8 @@ public class Estacionamiento extends AppCompatActivity {
         CardView cardView = (CardView) view;
 
         if(cardView.getVisibility()==View.VISIBLE){
-            fragment fragmentt=new fragment();
+            fragment fragmentt=fragment.newInstance(id);
             fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
-
         }else{
 
         }

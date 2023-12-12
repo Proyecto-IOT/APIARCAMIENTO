@@ -16,6 +16,8 @@ public class Vehicle {
     }
 
     public static class Result {
+        private String spot;
+
         private String license_plate;
         private String color;
         private OffsetDateTime updatedAt;
@@ -25,6 +27,15 @@ public class Vehicle {
         private String brand;
         private long vehicle_id;
 
+        private int parking_id;
+
+        public int getParking_id() {
+            return parking_id;
+        }
+
+        public void setParking_id(int parking_id) {
+            this.parking_id = parking_id;
+        }
 
         public String getLicensePlate() { return license_plate; }
         public void setLicensePlate(String value) { this.license_plate = value; }

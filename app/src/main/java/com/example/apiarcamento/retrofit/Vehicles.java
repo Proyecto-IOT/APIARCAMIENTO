@@ -1,5 +1,6 @@
 package com.example.apiarcamento.retrofit;
 
+import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 
@@ -15,4 +16,6 @@ public interface Vehicles {
 
     @POST("api/v3/vehicle/register/")
     Call<Vehicle> register(@Body Vehicle.Result vehicle);
+    @POST("api/v3/vehicle/ocupate/")
+    Call<Vehicle.Result> ocupate(@Body Vehicle.Result spot);
 }
