@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
+import com.example.apiarcamento.view.fragments.Ocupado;
 import com.example.apiarcamento.view.fragments.fragment;
 
 import java.util.List;
@@ -27,6 +29,8 @@ public class Estacionamiento extends AppCompatActivity {
 
     CardView cardView, cardView2, cardView3,cardView4,cardView5,cardView6,cardView7,
     cardView8,cardView9,cardView10,cardView11,cardView12;
+
+    ImageView img1,img2,img3, img4,img5,img6,img7,img8,img9,img10,img11,img12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,19 @@ public class Estacionamiento extends AppCompatActivity {
         cardView10=findViewById(R.id.cardview10);
         cardView11=findViewById(R.id.cardview11);
         cardView12=findViewById(R.id.cardview12);
+
+        img1=findViewById(R.id.imgC1);
+        img2=findViewById(R.id.imgC2);
+        img3=findViewById(R.id.imgC3);
+        img4=findViewById(R.id.imgC4);
+        img5=findViewById(R.id.imgC5);
+        img6=findViewById(R.id.imgC6);
+        img7=findViewById(R.id.imgC7);
+        img8=findViewById(R.id.imgC8);
+        img9=findViewById(R.id.imgC9);
+        img10=findViewById(R.id.imgC10);
+        img11=findViewById(R.id.imgC11);
+        img12=findViewById(R.id.imgC12);
 
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://192.168.1.115:8000/")
@@ -64,50 +81,50 @@ public class Estacionamiento extends AppCompatActivity {
 
                         switch (idjson){
                             case(1):
-                                cardView.setVisibility(View.VISIBLE);
+                                img1.setVisibility(View.VISIBLE);
                                 break;
                             case(2):
-                                cardView2.setVisibility(View.VISIBLE);
+                                img2.setVisibility(View.VISIBLE);
 
                                 break;
                             case(3):
-                                cardView3.setVisibility(View.VISIBLE);
+                                img3.setVisibility(View.VISIBLE);
 
                                 break;
                             case(4):
-                                cardView4.setVisibility(View.VISIBLE);
+                                img4.setVisibility(View.VISIBLE);
 
                                 break;
                             case(5):
-                                cardView5.setVisibility(View.VISIBLE);
+                                img5.setVisibility(View.VISIBLE);
 
                                 break;
                             case(6):
-                                cardView6.setVisibility(View.VISIBLE);
+                                img6.setVisibility(View.VISIBLE);
 
                                 break;
                             case(7):
-                                cardView7.setVisibility(View.VISIBLE);
+                                img7.setVisibility(View.VISIBLE);
 
                                 break;
                             case(8):
-                                cardView8.setVisibility(View.VISIBLE);
+                                img8.setVisibility(View.VISIBLE);
 
                                 break;
                             case(9):
-                                cardView9.setVisibility(View.VISIBLE);
+                                img9.setVisibility(View.VISIBLE);
 
                                 break;
                             case(10):
-                                cardView10.setVisibility(View.VISIBLE);
+                                img10.setVisibility(View.VISIBLE);
 
                                 break;
                             case(11):
-                                cardView11.setVisibility(View.VISIBLE);
+                                img11.setVisibility(View.VISIBLE);
 
                                 break;
                             case(12):
-                                cardView12.setVisibility(View.VISIBLE);
+                                img12.setVisibility(View.VISIBLE);
                                 break;
 
                         }
@@ -123,9 +140,20 @@ public class Estacionamiento extends AppCompatActivity {
 
             }
         });
+        View.OnClickListener cardClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCardClick(view);
+            }
+        };
+
+        cardView2.setOnClickListener(cardClickListener);
+        cardView12.setOnClickListener(cardClickListener);
 
     }
     public void onCardClick(View view) {
+        Log.e("RetrofitError", "Error en la llamada a la API");
+
         int cardViewId = view.getId();
 
         int id=0;
@@ -164,13 +192,15 @@ public class Estacionamiento extends AppCompatActivity {
         else if (cardViewId==R.id.cardview12) {
             id=12;
         }
+        ImageView imageView=(ImageView) view;
         CardView cardView = (CardView) view;
 
         if(cardView.getVisibility()==View.VISIBLE){
-            fragment fragmentt=fragment.newInstance(id);
-            fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
+            //Ocupado fragmentt=Ocupado.newInstance(id);
+            //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }else{
-
+            //fragment fragmentt=fragment.newInstance(id);
+            //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }
 
 

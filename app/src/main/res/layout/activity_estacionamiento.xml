@@ -41,7 +41,6 @@
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview1"
-                android:visibility="invisible"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -49,8 +48,10 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:src="@drawable/car"/>
 
                 <TextView
@@ -75,7 +76,9 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC2"
                     android:layout_width="wrap_content"
+                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
 
@@ -100,7 +103,9 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC3"
                     android:layout_width="wrap_content"
+                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
 
@@ -170,6 +175,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC4"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -195,6 +202,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC5"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -220,6 +229,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC6"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -245,6 +256,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC7"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -270,6 +283,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC8"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -295,6 +310,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC9"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -330,6 +347,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC10"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -355,6 +374,8 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC11"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
@@ -380,6 +401,7 @@
                 app:cardBackgroundColor="@color/md_theme_dark_surface">
 
                 <ImageView
+                    android:id="@+id/imgC12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/car"/>
