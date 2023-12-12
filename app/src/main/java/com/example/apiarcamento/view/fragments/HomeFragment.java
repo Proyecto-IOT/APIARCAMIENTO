@@ -1,6 +1,8 @@
 package com.example.apiarcamento.view.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.apiarcamento.Estacionamiento;
 import com.example.apiarcamento.R;
+import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
 
@@ -29,8 +33,14 @@ public class HomeFragment extends Fragment {
         btnClose=vista.findViewById(R.id.contenedordebtn2);
         btnPark=vista.findViewById(R.id.contenedordebtn3);
 
+        Intent parking=new Intent(getContext(), Estacionamiento.class);
 
-        //Intent parking=new Intent(getContext(), activity_estacionamiento.class);
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        int user_id = sharedPref.getInt("id", 0);
+
+        User ser_id=new User();
+        ser_id.setUserid(user_id);
+
         btnOpen.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -41,7 +51,7 @@ public class HomeFragment extends Fragment {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 ArduinoInterface arduino=retrofit.create(ArduinoInterface.class);
-                Call<Vehicle> userCall=arduino.enter();
+                Call<Vehicle> userCall=arduino.enter(ser_id);
 
                 userCall.enqueue(new Callback<Vehicle>() {
                     @Override
@@ -94,7 +104,7 @@ public class HomeFragment extends Fragment {
         btnPark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(parking);
+                startActivity(parking);
             }
         });
         return vista;
