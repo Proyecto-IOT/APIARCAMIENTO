@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.apiarcamento.Const.consts;
+import com.example.apiarcamento.adapter.AddAdapter;
 import com.example.apiarcamento.adapter.VehicleAdapter;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
@@ -59,7 +60,7 @@ public class estacioonarme extends AppCompatActivity {
                     Vehicle json= response.body();
                     String msg=json.getMsg();
                     tvTitulo.setText(msg);
-                    rvSpot.setAdapter(new VehicleAdapter(response.body().getData()));
+                    rvSpot.setAdapter(new AddAdapter(response.body().getData()));
                     rvSpot.setLayoutManager(new LinearLayoutManager(estacioonarme.this));
                     rvSpot.setHasFixedSize(true);
                 }else{

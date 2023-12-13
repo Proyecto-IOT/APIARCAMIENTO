@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.apiarcamento.Const.consts;
+import com.example.apiarcamento.models.Arduino;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
@@ -86,49 +87,61 @@ public class Estacionamiento extends AppCompatActivity {
                         switch (idjson){
                             case(1):
                                 img1.setVisibility(View.VISIBLE);
+                                cardView.setTag(1);
                                 break;
                             case(2):
                                 img2.setVisibility(View.VISIBLE);
+                                cardView2.setTag(1);
 
                                 break;
                             case(3):
                                 img3.setVisibility(View.VISIBLE);
+                                cardView3.setTag(1);
 
                                 break;
                             case(4):
                                 img4.setVisibility(View.VISIBLE);
+                                cardView4.setTag(1);
 
                                 break;
                             case(5):
                                 img5.setVisibility(View.VISIBLE);
+                                cardView5.setTag(1);
 
                                 break;
                             case(6):
                                 img6.setVisibility(View.VISIBLE);
+                                cardView6.setTag(1);
 
                                 break;
                             case(7):
                                 img7.setVisibility(View.VISIBLE);
+                                cardView7.setTag(1);
 
                                 break;
                             case(8):
                                 img8.setVisibility(View.VISIBLE);
+                                cardView8.setTag(1);
 
                                 break;
                             case(9):
                                 img9.setVisibility(View.VISIBLE);
+                                cardView9.setTag(1);
 
                                 break;
                             case(10):
                                 img10.setVisibility(View.VISIBLE);
+                                cardView10.setTag(1);
 
                                 break;
                             case(11):
                                 img11.setVisibility(View.VISIBLE);
+                                cardView11.setTag(1);
 
                                 break;
                             case(12):
                                 img12.setVisibility(View.VISIBLE);
+                                cardView12.setTag(1);
                                 break;
 
                         }
@@ -211,6 +224,8 @@ public class Estacionamiento extends AppCompatActivity {
             Ocupado fragmentt=Ocupado.newInstance(id);
             fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }else{
+            Arduino objeto=new Arduino();
+            objeto.setParking_id(id);
             Intent intentAdd=new Intent(this,estacioonarme.class);
             startActivity(intentAdd);
             //fragment fragmentt=fragment.newInstance(id);

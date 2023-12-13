@@ -13,9 +13,9 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 
 public interface SingUp {
-    @POST("api/v3/user/register/")
+    @POST("api/v3/user/register")
     Call<User> enviarDatos(@Body User usuario);
-    @POST("api/v3/user/login/")
+    @POST("api/v3/user/login")
     Call<User>  login(@Body User usuario);
     @POST("api/v3/user/logout/")
     Call<User> logout(@Header("Authorization") String token);
