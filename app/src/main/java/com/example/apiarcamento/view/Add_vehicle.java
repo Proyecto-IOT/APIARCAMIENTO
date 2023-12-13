@@ -61,8 +61,8 @@ public class Add_vehicle extends AppCompatActivity {
                 vehicle.setUserid(user_id);
 
                 Retrofit rf=new Retrofit.Builder()
-                        //.baseUrl("http://192.168.1.115:8000/")
-                        .baseUrl("http://192.168.116.78:8000/")
+                        .baseUrl("http://192.168.1.115:8000/")
+                        //.baseUrl("http://192.168.116.78:8000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 Vehicles vehiclesInterfaz=rf.create(Vehicles.class);

@@ -1,27 +1,44 @@
     package com.example.apiarcamento.view.fragments;
 
+    import android.content.Context;
     import android.content.Intent;
+    import android.content.SharedPreferences;
     import android.os.Bundle;
 
     import androidx.annotation.NonNull;
     import androidx.annotation.Nullable;
     import androidx.fragment.app.Fragment;
+    import androidx.recyclerview.widget.LinearLayoutManager;
+    import androidx.recyclerview.widget.RecyclerView;
 
+    import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.Button;
 
     import com.example.apiarcamento.R;
+    import com.example.apiarcamento.adapter.AddAdapter;
+    import com.example.apiarcamento.adapter.VehicleAdapter;
+    import com.example.apiarcamento.models.User;
+    import com.example.apiarcamento.models.Vehicle;
+    import com.example.apiarcamento.retrofit.Vehicles;
+    import com.example.apiarcamento.view.Add_vehicle;
+    import com.example.apiarcamento.view.MisVehicles;
     import com.example.apiarcamento.view.signup;
     import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-
+    import retrofit2.Call;
+    import retrofit2.Callback;
+    import retrofit2.Response;
+    import retrofit2.Retrofit;
+    import retrofit2.converter.gson.GsonConverterFactory;
 
 
     public class fragment extends BottomSheetDialogFragment {
 
         private static final String ARG_SPOT = null;
+        RecyclerView rvSpot;
 
         // Otros métodos y variables de tu fragmento
 
@@ -37,18 +54,40 @@
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_fragment, container, false);
 
-            Button btnAceptar = view.findViewById(R.id.btnAceptar);
 
             int valorEntero = getArguments().getInt(ARG_SPOT);
 
+            rvSpot=view.findViewById(R.id.recyclerSpot);
 
+            Intent IntentAdd=new Intent(getContext(), Add_vehicle.class);
 
-            btnAceptar.setOnClickListener(new View.OnClickListener() {
+            SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            int user_id = sharedPref.getInt("id", 0);
+            User usuario = new User();
+            usuario.setUserid(user_id);
+            Retrofit rf=new Retrofit.Builder()
+                    .baseUrl("http://192.168.1.115:8000/")
+                    //.baseUrl("http://192.168.116.78:8000/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            Vehicles vehiclesInterfaz=rf.create(Vehicles.class);
+            Log.e("DEBUG", "successful: " );
+            Call<Vehicle> Call=vehiclesInterfaz.search(usuario);
+            Log.e("DEBUG", "successful: " );
+            Call.enqueue(new Callback<Vehicle>() {
                 @Override
-                public void onClick(View v) {
-                    Intent registrarse = new Intent(getActivity(), signup.class);
-                    startActivity(registrarse);
-                    dismiss(); // Esto cerrará el fragmento
+                public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
+                    if(response.isSuccessful()){
+                        Log.e("DEBUG", "successfulLLL: " );
+                        rvSpot.setAdapter(new VehicleAdapter(response.body().getData()));
+                        rvSpot.setLayoutManager(new LinearLayoutManager(getContext()));
+                        rvSpot.setHasFixedSize(true);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Vehicle> call, Throwable t) {
+
                 }
             });
 

@@ -59,8 +59,8 @@ public class Ocupado extends BottomSheetDialogFragment {
         id.setParking_id(valorEntero);
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://192.168.1.115:8000/")
-                .baseUrl("http://192.168.116.78:8000/")
+                .baseUrl("http://192.168.1.115:8000/")
+               // .baseUrl("http://192.168.116.78:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Vehicles vehiclesInterface=retrofit.create(Vehicles.class);
@@ -68,17 +68,21 @@ public class Ocupado extends BottomSheetDialogFragment {
         userCall.enqueue(new Callback<Vehicle.Result>() {
             @Override
             public void onResponse(Call<Vehicle.Result> call, Response<Vehicle.Result> response) {
+                Log.d("TOKENN", ""+valorEntero);
                 if(response.isSuccessful()){
                     Vehicle.Result body = response.body();
                     String platejson= body.getLicensePlate();
+                    Log.d("TOKENN", platejson);
+                    tvPlate.setText(platejson);
                     String colorjson= body.getColor();
                     String brandjson= body.getBrand();
                     String modeljson= body.getModel();
                     tvBrand.setText(brandjson);
                     tvColor.setText(colorjson);
                     tvModel.setText(modeljson);
-                    tvPlate.setText(platejson);
                 }
+
+
             }
 
             @Override

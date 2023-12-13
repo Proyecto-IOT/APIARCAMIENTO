@@ -63,8 +63,8 @@ public class Estacionamiento extends AppCompatActivity {
         img12=findViewById(R.id.imgC12);
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://192.168.1.115:8000/")
-                .baseUrl("http://192.168.116.78:8000/")
+                .baseUrl("http://192.168.1.115:8000/")
+                //.baseUrl("http://192.168.116.78:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ArduinoInterface Arduinoointerface=retrofit.create(ArduinoInterface.class);
@@ -147,14 +147,24 @@ public class Estacionamiento extends AppCompatActivity {
             }
         };
 
+        cardView.setOnClickListener(cardClickListener);
         cardView2.setOnClickListener(cardClickListener);
+        cardView3.setOnClickListener(cardClickListener);
+        cardView4.setOnClickListener(cardClickListener);
+        cardView5.setOnClickListener(cardClickListener);
+        cardView6.setOnClickListener(cardClickListener);
+        cardView7.setOnClickListener(cardClickListener);
+        cardView8.setOnClickListener(cardClickListener);
+        cardView9.setOnClickListener(cardClickListener);
+        cardView10.setOnClickListener(cardClickListener);
+        cardView11.setOnClickListener(cardClickListener);
         cardView12.setOnClickListener(cardClickListener);
 
     }
     public void onCardClick(View view) {
-        Log.e("RetrofitError", "Error en la llamada a la API");
-
+        Log.e("RetrofitError", "Errorrrrrrrr");
         int cardViewId = view.getId();
+        Log.e("RetrofitError", "Errorrrrrrrr");
 
         int id=0;
         if(cardViewId==R.id.cardview1){
@@ -192,15 +202,14 @@ public class Estacionamiento extends AppCompatActivity {
         else if (cardViewId==R.id.cardview12) {
             id=12;
         }
-        ImageView imageView=(ImageView) view;
         CardView cardView = (CardView) view;
 
-        if(cardView.getVisibility()==View.VISIBLE){
-            //Ocupado fragmentt=Ocupado.newInstance(id);
-            //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
+        if (cardView.getTag() != null && cardView.getTag().equals("1")) {
+            Ocupado fragmentt=Ocupado.newInstance(id);
+            fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }else{
-            //fragment fragmentt=fragment.newInstance(id);
-            //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
+            fragment fragmentt=fragment.newInstance(id);
+            fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }
 
 

@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
             Log.e("DEBUG", "Onclck: " );
 
             Retrofit retrofit = new Retrofit.Builder()
-                    //.baseUrl("http://192.168.1.115:8000/")
-                    .baseUrl("http://192.168.116.78:8000/")
+                    .baseUrl("http://192.168.1.115:8000/")
+                    //.baseUrl("http://192.168.116.78:8000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             SingUp singupinterface=retrofit.create(SingUp.class);

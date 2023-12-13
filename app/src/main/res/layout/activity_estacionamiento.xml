@@ -41,6 +41,7 @@
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview1"
+                android:tag="1"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -51,7 +52,7 @@
                     android:id="@+id/imgC1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     android:src="@drawable/car"/>
 
                 <TextView
@@ -69,6 +70,7 @@
             <!-- Segundo elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview2"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -96,6 +98,7 @@
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview3"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -168,6 +171,7 @@
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview4"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -195,6 +199,7 @@
             <!-- Segundo elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview5"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -222,6 +227,7 @@
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview6"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -249,6 +255,7 @@
             <!-- Cuarto elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview7"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -276,6 +283,7 @@
             <!-- Quinto elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview8"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -303,6 +311,7 @@
             <!-- Sexto elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview9"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -340,6 +349,7 @@
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview10"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -367,6 +377,7 @@
             <!-- Segundo elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview11"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -394,6 +405,7 @@
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview12"
+                android:tag="1"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
