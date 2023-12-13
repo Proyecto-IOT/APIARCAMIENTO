@@ -7,11 +7,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.Estacionamiento;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.User;
@@ -44,26 +46,28 @@ public class HomeFragment extends Fragment {
         btnOpen.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-
+                Log.d("Checar", "OnLong");
+                consts ip=new consts();
                 Retrofit retrofit = new Retrofit.Builder()
-                        //.baseUrl("http://192.168.1.115:8000/")
-                        .baseUrl("http://192.168.116.78:8000/")
+                        .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 ArduinoInterface arduino=retrofit.create(ArduinoInterface.class);
                 Call<Vehicle> userCall=arduino.enter(ser_id);
-
                 userCall.enqueue(new Callback<Vehicle>() {
                     @Override
                     public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
+                        Log.d("Checar", "Respondió");
                         if(response.isSuccessful()){
+                            Log.d("Checar", "Abrió");
+                        }else{
+                            Log.d("Checar", "Error");
 
                         }
                     }
-
                     @Override
                     public void onFailure(Call<Vehicle> call, Throwable t) {
-
+                        Log.d("Checar", "Falló retrofi");
                     }
                 });
 
@@ -75,9 +79,9 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onLongClick(View view) {
 
+                consts ip=new consts();
                 Retrofit retrofit = new Retrofit.Builder()
-                        //.baseUrl("http://192.168.1.115:8000/")
-                        .baseUrl("http://192.168.116.78:8000/")
+                        .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 ArduinoInterface arduino=retrofit.create(ArduinoInterface.class);

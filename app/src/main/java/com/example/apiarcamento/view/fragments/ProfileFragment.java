@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
@@ -48,9 +49,9 @@ public class ProfileFragment extends Fragment {
         Intent misdatoss=new Intent(getContext(), MisDatos.class);
         Intent IntentMV=new Intent(getContext(), MisVehicles.class);
 
+        consts ip=new consts();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.115:8000/")
-                //.baseUrl("http://192.168.116.78:8000/")
+                .baseUrl(ip.ip)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SingUp singupinterface=retrofit.create(SingUp.class);
@@ -79,9 +80,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
 
                 Log.d("TOKENN", token);
+                consts ip=new consts();
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.115:8000/")
-                        //.baseUrl("http://192.168.116.78:8000/")
+                        .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);

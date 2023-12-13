@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.adapter.VehicleAdapter;
 import com.example.apiarcamento.models.User;
@@ -42,9 +43,9 @@ public class MisVehicles extends AppCompatActivity {
         int user_id = sharedPref.getInt("id", 0);
         User usuario = new User();
         usuario.setUserid(user_id);
-        Retrofit rf=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.115:8000/")
-                //.baseUrl("http://192.168.116.78:8000/")
+        consts ip=new consts();
+        Retrofit rf = new Retrofit.Builder()
+                .baseUrl(ip.ip)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Vehicles vehiclesInterfaz=rf.create(Vehicles.class);

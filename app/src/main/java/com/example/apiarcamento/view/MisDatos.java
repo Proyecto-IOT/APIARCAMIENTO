@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
@@ -56,9 +57,9 @@ public class MisDatos extends AppCompatActivity {
         String token = sharedPref.getString("token", null);
         Log.d("DEBUG", "User ID: " + token);
 
+        consts ip=new consts();
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://192.168.1.115:8000/")
-                .baseUrl("http://192.168.116.78:8000/")
+                .baseUrl(ip.ip)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SingUp singupinterface=retrofit.create(SingUp.class);
@@ -132,9 +133,9 @@ public class MisDatos extends AppCompatActivity {
                 Log.e("DEBUG", "Email: " + usuario.getEmail());
                 Log.e("DEBUG", "Password: " + usuario.getPassword());
 
+                consts ip=new consts();
                 Retrofit retrofit = new Retrofit.Builder()
-                        //.baseUrl("http://192.168.1.115:8000/")
-                        .baseUrl("http://192.168.116.78:8000/")
+                        .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 SingUp singupinterface=retrofit.create(SingUp.class);

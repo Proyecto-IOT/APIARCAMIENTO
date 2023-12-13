@@ -69,7 +69,6 @@
             consts ip=new consts();
             Retrofit rf=new Retrofit.Builder()
                     .baseUrl(ip.ip)
-                    //.baseUrl("http://192.168.116.78:8000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             Vehicles vehiclesInterfaz=rf.create(Vehicles.class);

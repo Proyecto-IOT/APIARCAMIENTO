@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.adapter.VehicleAdapter;
 import com.example.apiarcamento.models.Vehicle;
@@ -60,9 +61,9 @@ public class Add_vehicle extends AppCompatActivity {
                 vehicle.setColor(colorString);
                 vehicle.setUserid(user_id);
 
-                Retrofit rf=new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.115:8000/")
-                        //.baseUrl("http://192.168.116.78:8000/")
+                consts ip=new consts();
+                Retrofit rf = new Retrofit.Builder()
+                        .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 Vehicles vehiclesInterfaz=rf.create(Vehicles.class);

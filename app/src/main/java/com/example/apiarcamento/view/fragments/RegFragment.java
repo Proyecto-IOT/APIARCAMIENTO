@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.Vehicles;
@@ -28,9 +29,9 @@ public class RegFragment extends Fragment {
 
         id.setParking_id(1);
 
+        consts ip=new consts();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.115:8000/")
-                // .baseUrl("http://192.168.116.78:8000/")
+                .baseUrl(ip.ip)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Vehicles vehiclesInterface=retrofit.create(Vehicles.class);
