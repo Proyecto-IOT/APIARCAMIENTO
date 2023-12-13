@@ -40,6 +40,7 @@ import retrofit2.http.Body;
 public class signup extends AppCompatActivity {
 
     EditText etName,etLastName,etMSurname, etGender, etEmail, etPassword;
+    TextView iot;
     Button Registrar;
     Spinner spGender;
     @Override
@@ -53,6 +54,7 @@ public class signup extends AppCompatActivity {
         etPassword=findViewById(R.id.passwordField);
         Registrar=findViewById(R.id.btn_login);
         spGender=findViewById(R.id.genderSpinner);
+        iot=findViewById(R.id.textNoCuenta);
 
         Intent Login=new Intent(this, MainActivity.class);
 
@@ -124,6 +126,12 @@ public class signup extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+        iot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(Login);
             }
         });
     }
