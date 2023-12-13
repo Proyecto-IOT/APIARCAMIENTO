@@ -29,7 +29,15 @@ public class User {
     private String email;
     public String password;
 
+    private String msg;
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String value) {
+        this.msg = value;
+    }
     public int getIsActive() { return is_active; }
     public void setIsActive(int value) { this.is_active = value; }
 

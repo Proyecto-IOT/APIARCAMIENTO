@@ -6,6 +6,15 @@ import java.util.List;
 import java.time.OffsetDateTime;
 
 public class Vehicle {
+    private String msg;
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String value) {
+        this.msg = value;
+    }
     private List<Result> data;
     public List<Result> getData() {
         return data;

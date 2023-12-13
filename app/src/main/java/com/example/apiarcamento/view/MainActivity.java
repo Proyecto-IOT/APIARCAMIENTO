@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
@@ -66,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
             usuario.setEmail(email);
             usuario.setPassword(pass);
             Log.e("DEBUG", "Onclck: " );
-
+            consts ip=new consts();
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.115:8000/")
-                    //.baseUrl("http://192.168.116.78:8000/")
+                    //.baseUrl(ip.ip)
+                    .baseUrl("http://192.168.117.105:8000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             SingUp singupinterface=retrofit.create(SingUp.class);
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if(response.isSuccessful()){
+                        Log.d("TOKENN", "bien");
                         disableAllViews(linearr, true);
                         int colorLoading = 0xFFFFFFFF;
                         padrino.setBackgroundColor(colorLoading);
@@ -103,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
 
                         startActivity(Iniciar);
+                    }else{
+                        Log.d("TOKENN", "mal");
+                        User json = response.body();
+                        String msgjson=json.getMsg();
+                        Log.d("TOKENN", msgjson);
+                        disableAllViews(linearr, true);
+                        loading.setVisibility(View.INVISIBLE);
+                        int colorLoading = 0xFFFFFFFF;
+                        padrino.setBackgroundColor(colorLoading);
                     }
                 }
 

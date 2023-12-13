@@ -3,6 +3,7 @@ package com.example.apiarcamento;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
@@ -62,9 +64,11 @@ public class Estacionamiento extends AppCompatActivity {
         img11=findViewById(R.id.imgC11);
         img12=findViewById(R.id.imgC12);
 
+        consts ip=new consts();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.115:8000/")
-                //.baseUrl("http://192.168.116.78:8000/")
+                //.baseUrl("http://192.168.1.115:8000/")
+                .baseUrl(ip.ip)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ArduinoInterface Arduinoointerface=retrofit.create(ArduinoInterface.class);
@@ -162,9 +166,8 @@ public class Estacionamiento extends AppCompatActivity {
 
     }
     public void onCardClick(View view) {
-        Log.e("RetrofitError", "Errorrrrrrrr");
+        Log.e("Va", "vaavaavava");
         int cardViewId = view.getId();
-        Log.e("RetrofitError", "Errorrrrrrrr");
 
         int id=0;
         if(cardViewId==R.id.cardview1){
@@ -208,9 +211,18 @@ public class Estacionamiento extends AppCompatActivity {
             Ocupado fragmentt=Ocupado.newInstance(id);
             fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }else{
-            fragment fragmentt=fragment.newInstance(id);
-            fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
+            Intent intentAdd=new Intent(this,estacioonarme.class);
+            startActivity(intentAdd);
+            //fragment fragmentt=fragment.newInstance(id);
+            //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }
+
+
+
+
+
+
+
 
 
 

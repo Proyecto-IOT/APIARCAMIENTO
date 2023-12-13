@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
@@ -57,9 +58,9 @@ public class Ocupado extends BottomSheetDialogFragment {
         Vehicle.Result id=new Vehicle.Result();
 
         id.setParking_id(valorEntero);
-
+        consts ip=new consts();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.115:8000/")
+                .baseUrl(ip.ip)
                // .baseUrl("http://192.168.116.78:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
