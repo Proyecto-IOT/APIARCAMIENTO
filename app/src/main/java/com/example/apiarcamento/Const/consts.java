@@ -1,5 +1,5 @@
 package com.example.apiarcamento.Const;
 
 public class consts {
-    public String ip="http://192.168.117.105:8000/";
+    public static final String ip="http://54.81.196.122/";
 }

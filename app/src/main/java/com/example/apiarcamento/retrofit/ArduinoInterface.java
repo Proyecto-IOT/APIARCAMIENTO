@@ -10,12 +10,12 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ArduinoInterface {
-    @POST("api/v3/arduino/enter/")
+    @POST("api/v3/arduino/enter")
     Call<Vehicle> enter(@Body User user_id);
-    @POST("api/v3/arduino/exit/")
+    @POST("api/v3/arduino/exit")
     Call<Vehicle> exit();
-    @POST("api/v3/arduino/park/")
+    @POST("api/v3/arduino/park")
     Call<Arduino> park(@Body Arduino ids);
-    @POST("api/v3/arduino/refresh/")
+    @POST("api/v3/arduino/refresh")
     Call<Spot> refresh();
 }

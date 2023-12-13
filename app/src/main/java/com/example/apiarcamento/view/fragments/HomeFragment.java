@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.Estacionamiento;
@@ -28,12 +29,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
     LinearLayout btnOpen, btnClose, btnPark;
+    TextView Quienlodiria;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_home, container, false);
         btnOpen=vista.findViewById(R.id.contenedordebtn1);
         btnClose=vista.findViewById(R.id.contenedordebtn2);
         btnPark=vista.findViewById(R.id.contenedordebtn3);
+        Quienlodiria= vista.findViewById(R.id.textoBienvenida);
 
         Intent parking=new Intent(getContext(), Estacionamiento.class);
 
@@ -61,7 +64,10 @@ public class HomeFragment extends Fragment {
                         if(response.isSuccessful()){
                             Log.d("Checar", "Abrió");
                         }else{
+                            Vehicle json= response.body();
+                            String msg=json.getMsg();
                             Log.d("Checar", "Error");
+                            Quienlodiria.setText(msg);
 
                         }
                     }

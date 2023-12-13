@@ -106,9 +106,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(Iniciar);
                     }else{
                         Log.d("TOKENN", "mal");
-                        User json = response.body();
-                        String msgjson=json.getMsg();
-                        Log.d("TOKENN", msgjson);
                         disableAllViews(linearr, true);
                         loading.setVisibility(View.INVISIBLE);
                         int colorLoading = 0xFFFFFFFF;

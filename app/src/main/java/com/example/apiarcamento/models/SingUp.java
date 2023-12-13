@@ -17,12 +17,12 @@ public interface SingUp {
     Call<User> enviarDatos(@Body User usuario);
     @POST("api/v3/user/login")
     Call<User>  login(@Body User usuario);
-    @POST("api/v3/user/logout/")
+    @POST("api/v3/user/logout")
     Call<User> logout(@Header("Authorization") String token);
 
-    @GET("api/v3/user/user-info/")
+    @GET("api/v3/user/user-info")
     Call<User> edit(@Header("Authorization") String token);
 
-    @PUT("api/v3/user/update/")
+    @PUT("api/v3/user/update")
     Call<User> editarDatos(@Body User usuario);
 }
