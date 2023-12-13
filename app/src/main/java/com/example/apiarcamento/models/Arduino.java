@@ -1,8 +1,8 @@
 package com.example.apiarcamento.models;
 
 public class Arduino {
-    private long vehicle_id;
-    private int parking_id;
+    public long vehicle_id;
+    public int parking_id;
 
     public long getVehicle_id() {
         return vehicle_id;

@@ -15,8 +15,8 @@ public class Spot {
 
     public static class Result {
 
-        private String spot;
-        private int parking_id;
+        public String spot;
+        public int parking_id;
 
         public int getParking_id() {
             return parking_id;

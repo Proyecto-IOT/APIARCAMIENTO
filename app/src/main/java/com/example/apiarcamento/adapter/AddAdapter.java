@@ -2,6 +2,7 @@ package com.example.apiarcamento.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,11 +57,12 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
             public void onClick(View view) {
                 Log.e("DEBUG", "Onclck: " );
                 Intent intent=new Intent(context, Estacionamiento.class);
-
+                SharedPreferences sharedPref = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                int id = sharedPref.getInt("parking", 0);
+                Log.e("DEBUG", "shared: "+id );
                 Arduino ids=new Arduino();
-                holder.parking_id=ids.getParking_id();
+                ids.setParking_id(id);
                 ids.setVehicle_id(holder.vehicle_id);
-                Log.e("DEBUG", "Onclck: "+holder.vehicle_id );
                 consts ip=new consts();
                 Retrofit rf=new Retrofit.Builder()
                         .baseUrl(ip.ip)
@@ -71,10 +73,14 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                 Call.enqueue(new Callback<Arduino>() {
                     @Override
                     public void onResponse(Call<Arduino> call, Response<Arduino> response) {
+                        Log.e("DEBUG", "Parking: "+ids.getParking_id() );
+                        Log.e("DEBUG", "Vehicle: "+ids.getVehicle_id() );
                         Log.e("DEBUG", "Onclckmedio: " );
                         if(response.isSuccessful()){
                             Log.e("DEBUG", "Onclckbien: " );
                             context.startActivity(intent);
+                        }else{
+                            Log.e("DEBUG", "Onclckmal: " );
                         }
                     }
 

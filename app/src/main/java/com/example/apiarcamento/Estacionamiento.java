@@ -3,7 +3,9 @@ package com.example.apiarcamento;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -224,6 +226,15 @@ public class Estacionamiento extends AppCompatActivity {
             Ocupado fragmentt=Ocupado.newInstance(id);
             fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }else{
+            Log.e("DEBUG", "Checos: "+id );
+
+            SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+            // Edita las SharedPreferences
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("parking", id);
+            editor.apply();
+
             Arduino objeto=new Arduino();
             objeto.setParking_id(id);
             Intent intentAdd=new Intent(this,estacioonarme.class);
