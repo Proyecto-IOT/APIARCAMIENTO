@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,8 +56,12 @@ public class humoAdapter extends RecyclerView.Adapter<humoAdapter.ViewHolder> {
 
         public void setData(Incidentresponsehumo.Humo humo) {
             this.HumoH = humo;
+            DateTimeFormatter formatoFechaHora = DateTimeFormatter.ISO_DATE_TIME;
+            LocalDateTime fechaHora = LocalDateTime.parse(humo.getCreatedAt(), formatoFechaHora);
+            DateTimeFormatter formatoDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String resultado = fechaHora.format(formatoDeseado);
             nomIncidente.setText("Niveles de Humo detectados");
-            fechaIncidente.setText(humo.getCreatedAt());
+            fechaIncidente.setText(resultado);
         }
     }
 }

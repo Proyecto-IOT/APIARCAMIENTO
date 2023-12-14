@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,6 +22,7 @@ import com.example.apiarcamento.models.Arduino;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
 import com.example.apiarcamento.retrofit.Vehicles;
+import com.example.apiarcamento.view.MisDatos;
 import com.example.apiarcamento.view.MisVehicles;
 
 import java.util.List;
@@ -83,9 +85,9 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
 
                         }else{
                             Log.e("DEBUG", "Onclckmal: "+response.code() );
+                            Toast.makeText(context, "Sintaxis incorrecta", Toast.LENGTH_SHORT).show();
                         }
                     }
-                        @Override
                         public void onFailure(Call<Arduino> call, Throwable t) {
                             Log.e("DEBUG", "OnclckMal: " );
                         }

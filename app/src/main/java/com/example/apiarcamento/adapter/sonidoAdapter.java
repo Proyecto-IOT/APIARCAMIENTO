@@ -12,6 +12,8 @@ import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.Incidenteresponse;
 import com.example.apiarcamento.view.RegistroIncidentes;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class sonidoAdapter extends RecyclerView.Adapter<sonidoAdapter.ViewHolder> {
@@ -51,8 +53,12 @@ public class sonidoAdapter extends RecyclerView.Adapter<sonidoAdapter.ViewHolder
 
         public void setData(Incidenteresponse.Sonido sonido) {
             this.SonidoH = sonido;
+            DateTimeFormatter formatoFechaHora = DateTimeFormatter.ISO_DATE_TIME;
+            LocalDateTime fechaHora = LocalDateTime.parse(sonido.getCreatedAt(), formatoFechaHora);
+            DateTimeFormatter formatoDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String resultado = fechaHora.format(formatoDeseado);
             nomIncidente.setText("Sonido fuerte detectado");
-            fechaIncidente.setText(sonido.getCreatedAt());
+            fechaIncidente.setText(resultado);
         }
     }
 }
