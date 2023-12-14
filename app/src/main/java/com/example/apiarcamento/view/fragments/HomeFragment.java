@@ -23,6 +23,8 @@ import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
 import com.example.apiarcamento.view.RegistroIncidentes;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,7 +55,7 @@ public class HomeFragment extends Fragment {
         btnOpen.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Log.d("Checar", "OnLong");
+                Log.d("Checar", "OnLong"+ser_id.getUserid());
                 consts ip=new consts();
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(ip.ip)
@@ -68,16 +70,13 @@ public class HomeFragment extends Fragment {
                         if(response.isSuccessful()){
                             Log.d("Checar", "Abrió");
                         }else{
-                            Vehicle json= response.body();
-                            String msg=json.getMsg();
-                            Log.d("Checar", "Error");
-                            Quienlodiria.setText(msg);
-
+                            Log.d("Checar", "Mal"+response.code());
                         }
+
                     }
                     @Override
                     public void onFailure(Call<Vehicle> call, Throwable t) {
-                        Log.d("Checar", "Falló retrofi");
+                        Log.d("Checar", "Falló retrofiiiiiiii");
                     }
                 });
 
@@ -95,7 +94,7 @@ public class HomeFragment extends Fragment {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 ArduinoInterface arduino=retrofit.create(ArduinoInterface.class);
-                Call<Vehicle> call=arduino.exit();
+                Call<Vehicle> call=arduino.enter(ser_id);
 
                 call.enqueue(new Callback<Vehicle>() {
                     @Override
