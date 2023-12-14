@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apiarcamento.R;
-import com.example.apiarcamento.models.Sonido;
+import com.example.apiarcamento.models.Incidenteresponse;
 import com.example.apiarcamento.view.RegistroIncidentes;
 
 import java.util.List;
 
 public class sonidoAdapter extends RecyclerView.Adapter<sonidoAdapter.ViewHolder> {
-    private List<Sonido.Result> dataSonido;
+    private List<Incidenteresponse.Sonido> dataSonido;
 
-    public sonidoAdapter(List<Sonido.Result> dataSonido, RegistroIncidentes registroIncidentes) {
+    public sonidoAdapter(List<Incidenteresponse.Sonido> dataSonido) {
         this.dataSonido = dataSonido;
     }
 
@@ -31,7 +31,7 @@ public class sonidoAdapter extends RecyclerView.Adapter<sonidoAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull sonidoAdapter.ViewHolder holder, int position) {
-        Sonido.Result sonido = dataSonido.get(position);
+        Incidenteresponse.Sonido sonido = dataSonido.get(position);
         holder.setData(sonido);
     }
 
@@ -42,17 +42,17 @@ public class sonidoAdapter extends RecyclerView.Adapter<sonidoAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nomIncidente, fechaIncidente;
-        Sonido.Result SonidoH;
+        Incidenteresponse.Sonido SonidoH;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nomIncidente = itemView.findViewById(R.id.tipoIncidente);
             fechaIncidente = itemView.findViewById(R.id.fechaIncidente);
         }
 
-        public void setData(Sonido.Result sonido) {
+        public void setData(Incidenteresponse.Sonido sonido) {
             this.SonidoH = sonido;
             nomIncidente.setText("Sonido fuerte detectado");
-            fechaIncidente.setText(sonido.getCreatedAt().toString());
+            fechaIncidente.setText(sonido.getCreatedAt());
         }
     }
 }
