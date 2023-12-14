@@ -126,14 +126,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(misdatoss);
-                getActivity().finish();
+                //getActivity().finish();
             }
         });
         misve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(IntentMV);
-                getActivity().finish();
+                //getActivity().finish();
             }
         });
 
