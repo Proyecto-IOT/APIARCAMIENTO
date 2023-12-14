@@ -114,6 +114,7 @@ public class signup extends AppCompatActivity {
                         if(response.isSuccessful()){
 
                             startActivity(Login);
+                            finish();
                         }
                     }
 
@@ -134,5 +135,13 @@ public class signup extends AppCompatActivity {
                 startActivity(Login);
             }
         });
+
+    }
+    public void onBackPressed() {
+        Log.e("DEBUG", "Bck: " );
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

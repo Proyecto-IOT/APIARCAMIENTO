@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.User;
+import com.example.apiarcamento.view.Home;
 import com.example.apiarcamento.view.MainActivity;
 import com.example.apiarcamento.view.MisDatos;
 import com.example.apiarcamento.view.MisVehicles;
@@ -105,6 +108,7 @@ public class ProfileFragment extends Fragment {
                             editor.apply();
 
                             startActivity(Intentlogout);
+                            getActivity().finish();
                         }
                     }
 
@@ -122,15 +126,19 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(misdatoss);
+                getActivity().finish();
             }
         });
         misve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(IntentMV);
+                getActivity().finish();
             }
         });
+
         return vista;
 
     }
+
 }

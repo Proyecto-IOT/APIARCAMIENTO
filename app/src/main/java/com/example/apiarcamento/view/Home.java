@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.apiarcamento.R;
@@ -49,5 +51,11 @@ public class Home extends AppCompatActivity {
             }
         });
         bottomNavigationView.setSelectedItemId(R.id.home);
+
     }
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
 }

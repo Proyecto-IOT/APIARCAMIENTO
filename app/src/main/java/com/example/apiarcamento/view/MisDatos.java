@@ -147,6 +147,8 @@ public class MisDatos extends AppCompatActivity {
                         if(response.isSuccessful()){
 
                             startActivity(home);
+                            finish();
+
                         }
                     }
 

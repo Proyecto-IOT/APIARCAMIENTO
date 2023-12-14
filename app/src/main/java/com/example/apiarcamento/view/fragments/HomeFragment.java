@@ -1,5 +1,6 @@
 package com.example.apiarcamento.view.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -115,8 +116,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(parking);
+                getActivity().finish();
             }
         });
+
         return vista;
     }
+    public void onBackPressed() {
+
+        //finishAffinity();
+
+        // Termina el proceso
+        System.exit(0);
+    }
+
 }

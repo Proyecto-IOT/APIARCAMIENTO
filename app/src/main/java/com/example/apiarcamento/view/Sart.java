@@ -39,6 +39,8 @@ public class Sart extends AppCompatActivity {
                 } else {
                     startActivity(main);
                 }
+                finish();
+
             }
         }.start();
 

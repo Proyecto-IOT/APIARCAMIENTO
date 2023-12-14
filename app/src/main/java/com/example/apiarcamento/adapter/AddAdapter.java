@@ -79,6 +79,7 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                         if(response.isSuccessful()){
                             Log.e("DEBUG", "Onclckbien: " );
                             context.startActivity(intent);
+
                         }else{
                             Log.e("DEBUG", "Onclckmal: " );
                         }

@@ -19,6 +19,7 @@ import com.example.apiarcamento.models.SingUp;
 import com.example.apiarcamento.models.Spot;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
+import com.example.apiarcamento.view.Home;
 import com.example.apiarcamento.view.fragments.Ocupado;
 import com.example.apiarcamento.view.fragments.fragment;
 
@@ -90,11 +91,11 @@ public class Estacionamiento extends AppCompatActivity {
                         switch (idjson){
                             case(1):
                                 img1.setVisibility(View.VISIBLE);
-                                cardView.setTag(1);
+                                cardView.setTag("1");
                                 break;
                             case(2):
                                 img2.setVisibility(View.VISIBLE);
-                                cardView2.setTag(1);
+                                cardView2.setTag("1");
 
                                 break;
                             case(3):
@@ -159,7 +160,6 @@ public class Estacionamiento extends AppCompatActivity {
             public void onFailure(Call<Spot> call, Throwable t) {
                 Log.e("RetrofitError", "Error en la llamada a la API", t);
 
-                //startActivity(nojala);
 
             }
         });
@@ -243,18 +243,15 @@ public class Estacionamiento extends AppCompatActivity {
             objeto.setParking_id(id);
             Intent intentAdd=new Intent(this,estacioonarme.class);
             startActivity(intentAdd);
+            finish();
             //fragment fragmentt=fragment.newInstance(id);
             //fragmentt.show(getSupportFragmentManager(), fragmentt.getTag());
         }
-
-
-
-
-
-
-
-
-
-
+    }
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }
