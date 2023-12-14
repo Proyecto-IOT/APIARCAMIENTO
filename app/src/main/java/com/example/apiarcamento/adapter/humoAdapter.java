@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apiarcamento.R;
-import com.example.apiarcamento.models.Humo;
+import com.example.apiarcamento.models.Incidenteresponse;
+import com.example.apiarcamento.models.Incidentresponsehumo;
 import com.example.apiarcamento.view.RegistroIncidentes;
 
 import java.util.List;
 
 public class humoAdapter extends RecyclerView.Adapter<humoAdapter.ViewHolder> {
-    private List<Humo.Result> dataHumo;
+    private List<Incidentresponsehumo.Humo> dataHumo;
 
-    public humoAdapter(List<Humo.Result> dataHumo, RegistroIncidentes registroIncidentes) {
+    public humoAdapter(List<Incidentresponsehumo.Humo> dataHumo) {
         this.dataHumo = dataHumo;
     }
 
@@ -31,7 +32,7 @@ public class humoAdapter extends RecyclerView.Adapter<humoAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull humoAdapter.ViewHolder holder, int position) {
-        Humo.Result humo = dataHumo.get(position);
+     Incidentresponsehumo.Humo humo = dataHumo.get(position);
         holder.setData(humo);
     }
 
@@ -42,7 +43,7 @@ public class humoAdapter extends RecyclerView.Adapter<humoAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nomIncidente, fechaIncidente;
-        Humo.Result HumoH;
+        Incidentresponsehumo.Humo HumoH;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,10 +51,10 @@ public class humoAdapter extends RecyclerView.Adapter<humoAdapter.ViewHolder> {
             fechaIncidente = itemView.findViewById(R.id.fechaIncidente);
         }
 
-        public void setData(Humo.Result humo) {
+        public void setData(Incidentresponsehumo.Humo humo) {
             this.HumoH = humo;
             nomIncidente.setText("Niveles de Humo detectados");
-            fechaIncidente.setText(humo.getCreatedAt().toString());
+            fechaIncidente.setText(humo.getCreatedAt());
         }
     }
 }
