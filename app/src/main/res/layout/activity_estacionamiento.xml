@@ -41,7 +41,7 @@
             <!-- Primer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview1"
-                android:tag="1"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"
@@ -52,7 +52,7 @@
                     android:id="@+id/imgC1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:src="@drawable/car"/>
 
                 <TextView
@@ -98,7 +98,7 @@
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview3"
-                android:tag="0"
+                android:tag="1"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"

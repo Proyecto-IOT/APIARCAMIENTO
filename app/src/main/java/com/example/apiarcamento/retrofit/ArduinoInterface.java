@@ -7,6 +7,7 @@ import com.example.apiarcamento.models.Vehicle;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ArduinoInterface {
@@ -16,6 +17,6 @@ public interface ArduinoInterface {
     Call<Vehicle> exit();
     @POST("api/v3/arduino/park")
     Call<Arduino> park(@Body Arduino ids);
-    @POST("api/v3/arduino/refresh")
+    @GET("api/v3/arduino/refresh")
     Call<Spot> refresh();
 }

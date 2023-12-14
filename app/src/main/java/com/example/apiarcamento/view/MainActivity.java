@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(view -> {
             Intent registrarse = new Intent(this, signup.class);
             startActivity(registrarse);
+            //finish();
         });
 
         btnLogIn.setOnClickListener(view -> {
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
 
                         startActivity(Iniciar);
+                        //finish();
                     }else{
                         Log.d("TOKENN", "mal");
                         disableAllViews(linearr, true);

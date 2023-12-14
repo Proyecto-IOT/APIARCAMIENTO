@@ -49,9 +49,7 @@ public class MisVehicles extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Vehicles vehiclesInterfaz=rf.create(Vehicles.class);
-        Log.e("DEBUG", "successful: " );
         Call<Vehicle> Call=vehiclesInterfaz.search(usuario);
-        Log.e("DEBUG", "successful: " );
         Call.enqueue(new Callback<Vehicle>() {
             @Override
             public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {

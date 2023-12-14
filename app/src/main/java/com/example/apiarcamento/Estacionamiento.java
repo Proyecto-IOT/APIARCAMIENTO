@@ -80,6 +80,7 @@ public class Estacionamiento extends AppCompatActivity {
             @Override
             public void onResponse(Call<Spot> call, Response<Spot> response) {
                 if(response.isSuccessful()){
+                    Log.e("Checar", "SUCCESS");
                     Spot spotResponse = response.body();
                     List<Spot.Result> spotList = spotResponse.getData();
 
@@ -98,7 +99,7 @@ public class Estacionamiento extends AppCompatActivity {
                                 break;
                             case(3):
                                 img3.setVisibility(View.VISIBLE);
-                                cardView3.setTag(1);
+                                cardView3.setTag("1");
 
                                 break;
                             case(4):
@@ -148,6 +149,9 @@ public class Estacionamiento extends AppCompatActivity {
 
                         }
                     }
+                }
+                else{
+                    Log.e("Checar", "NO"+response.code());
                 }
             }
 

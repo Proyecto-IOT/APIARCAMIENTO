@@ -69,10 +69,14 @@ public class Ocupado extends BottomSheetDialogFragment {
             @Override
             public void onResponse(Call<Vehicle.Result> call, Response<Vehicle.Result> response) {
                 Log.d("TOKENN", ""+valorEntero);
-                if(response.isSuccessful()){
+                if(response.isSuccessful()&& response.body() != null){
+                    Log.d("TOKENN", "BIENN");
                     Vehicle.Result body = response.body();
                     String platejson= body.getLicensePlate();
-                    Log.d("TOKENN", platejson);
+                    Log.d("TOKENN", "Plate JSON: " + body.getLicensePlate());
+                    Log.d("TOKENN", "Color JSON: " + body.getColor());
+                    Log.d("TOKENN", "Brand JSON: " + body.getBrand());
+                    Log.d("TOKENN", "Model JSON: " + body.getModel());
                     tvPlate.setText(platejson);
                     String colorjson= body.getColor();
                     String brandjson= body.getBrand();
@@ -80,6 +84,8 @@ public class Ocupado extends BottomSheetDialogFragment {
                     tvBrand.setText(brandjson);
                     tvColor.setText(colorjson);
                     tvModel.setText(modeljson);
+                }else{
+                    Log.d("TOKENN", "MALLLLL");
                 }
 
 
