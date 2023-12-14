@@ -1,5 +1,6 @@
 package com.example.apiarcamento.view.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import com.example.apiarcamento.R;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.ArduinoInterface;
+import com.example.apiarcamento.view.RegistroIncidentes;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +30,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
-    LinearLayout btnOpen, btnClose, btnPark;
+    LinearLayout btnOpen, btnClose, btnPark, btnIncidents;
     TextView Quienlodiria;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -115,8 +117,26 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(parking);
+                getActivity().finish();
             }
         });
+
+        btnIncidents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), RegistroIncidentes.class);
+                startActivity(intent);
+            }
+        });
+
         return vista;
     }
+    public void onBackPressed() {
+
+        //finishAffinity();
+
+        // Termina el proceso
+        System.exit(0);
+    }
+
 }

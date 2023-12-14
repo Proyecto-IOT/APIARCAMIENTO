@@ -48,6 +48,7 @@ public class RegistroIncidentes extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
     }
 }
 
