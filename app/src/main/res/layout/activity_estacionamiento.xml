@@ -98,7 +98,7 @@
             <!-- Tercer elemento -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview3"
-                android:tag="1"
+                android:tag="0"
                 android:layout_width="0dp"
                 android:layout_height="170dp"
                 android:layout_columnWeight="1"

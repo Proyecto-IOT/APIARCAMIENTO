@@ -131,7 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Abrir pluma"
+                            android:text="Entrada"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -181,7 +181,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cerrar pluma"
+                            android:text="Salida"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold"

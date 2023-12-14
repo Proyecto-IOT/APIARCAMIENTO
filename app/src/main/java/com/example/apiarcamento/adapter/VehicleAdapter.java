@@ -1,5 +1,6 @@
 package com.example.apiarcamento.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -54,9 +55,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
                 int user_id = sharedPref.getInt("id", 0);
 
                 Vehicle.Result usuario = new Vehicle.Result();
-                usuario.setUserid(user_id);
                 usuario.setVehicleid(holder.vehicle_id);
-
+                Log.e("DEBUG", "Onclckbien: " +usuario.getVehicleid());
+                Log.e("DEBUG", "Onclckbien: " +holder.vehicle_id);
                 consts ip=new consts();
 
                 Retrofit rf=new Retrofit.Builder()
@@ -71,7 +72,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
                         if(response.isSuccessful()){
                             Log.e("DEBUG", "Onclckbien: " );
-                            notifyDataSetChanged();
+                            ((Activity)context).recreate();
                         }else{
                             Log.e("DEBUG", "Onclckmal: "+response.code() );
                             notifyDataSetChanged();

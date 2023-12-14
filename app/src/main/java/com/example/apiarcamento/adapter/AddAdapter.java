@@ -42,7 +42,7 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.view, parent, false);
+        View view=layoutInflater.inflate(R.layout.view2, parent, false);
         return new ViewHolder(view);
     }
 
@@ -82,10 +82,9 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                             context.startActivity(intent);
 
                         }else{
-                            Log.e("DEBUG", "Onclckmal: " );
+                            Log.e("DEBUG", "Onclckmal: "+response.code() );
                         }
                     }
-
                         @Override
                         public void onFailure(Call<Arduino> call, Throwable t) {
                             Log.e("DEBUG", "OnclckMal: " );
