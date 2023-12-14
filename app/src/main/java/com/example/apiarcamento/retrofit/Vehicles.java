@@ -6,6 +6,7 @@ import com.example.apiarcamento.models.Vehicle;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -18,4 +19,7 @@ public interface Vehicles {
     Call<Vehicle> register(@Body Vehicle.Result vehicle);
     @POST("api/v3/vehicle/ocupate")
     Call<Vehicle.Result> ocupate(@Body Vehicle.Result spot);
+    @POST("api/v3/vehicle/delete")
+    Call<Vehicle.Result> delete(@Body Vehicle.Result vehicle);
+
 }

@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
     <TextView
         android:id="@+id/tvModelo"
         android:layout_width="wrap_content"
@@ -45,6 +46,18 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tvColor"
         app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar vehículo"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/tvMatricula"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="10dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

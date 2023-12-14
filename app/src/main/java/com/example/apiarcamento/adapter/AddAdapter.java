@@ -64,6 +64,7 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                 ids.setParking_id(id);
                 ids.setVehicle_id(holder.vehicle_id);
                 consts ip=new consts();
+
                 Retrofit rf=new Retrofit.Builder()
                         .baseUrl(ip.ip)
                         .addConverterFactory(GsonConverterFactory.create())
@@ -85,10 +86,10 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                         }
                     }
 
-                    @Override
-                    public void onFailure(Call<Arduino> call, Throwable t) {
-                        Log.e("DEBUG", "OnclckMal: " );
-                    }
+                        @Override
+                        public void onFailure(Call<Arduino> call, Throwable t) {
+                            Log.e("DEBUG", "OnclckMal: " );
+                        }
                 });
             }
         });
