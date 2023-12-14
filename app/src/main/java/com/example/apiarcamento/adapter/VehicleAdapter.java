@@ -73,7 +73,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
                             Log.e("DEBUG", "Onclckbien: " );
                             notifyDataSetChanged();
                         }else{
-                            Log.e("DEBUG", "Onclckmal: " );
+                            Log.e("DEBUG", "Onclckmal: "+response.code() );
                             notifyDataSetChanged();
                         }
                     }

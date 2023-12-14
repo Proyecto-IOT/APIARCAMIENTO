@@ -38,7 +38,9 @@ public class HomeFragment extends Fragment {
         btnOpen=vista.findViewById(R.id.contenedordebtn1);
         btnClose=vista.findViewById(R.id.contenedordebtn2);
         btnPark=vista.findViewById(R.id.contenedordebtn3);
+        btnIncidents=vista.findViewById(R.id.contenedordebtn4);
         Quienlodiria= vista.findViewById(R.id.textoBienvenida);
+
 
         Intent parking=new Intent(getContext(), Estacionamiento.class);
 
@@ -120,7 +122,6 @@ public class HomeFragment extends Fragment {
                 getActivity().finish();
             }
         });
-
         btnIncidents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +129,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         return vista;
     }
     public void onBackPressed() {
