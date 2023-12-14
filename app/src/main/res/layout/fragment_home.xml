@@ -46,12 +46,62 @@
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"/>
 
+            <!-- BOTON Incidentes -->
+            <LinearLayout
+                android:id="@+id/contenedordebtn4"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/animationViewHome"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnHome4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:strokeColor="@color/md_theme_light_secondary"
+                    app:cardElevation="@dimen/cardview_default_elevation"
+                    app:cardBackgroundColor="@color/md_theme_dark_tertiaryContainer">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/contenedorCard4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconobtnIncidentes"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="35dp"
+                            android:src="@drawable/warning2"
+                            app:layout_constraintBottom_toBottomOf="@id/contenedorCard4"
+                            app:layout_constraintStart_toStartOf="@id/contenedorCard4"
+                            app:layout_constraintTop_toTopOf="@id/contenedorCard4"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Registro
+                            Incidentes"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconobtnIncidentes"
+                            app:layout_constraintTop_toTopOf="@id/contenedorCard4"
+                            app:layout_constraintBottom_toBottomOf="@id/contenedorCard4"
+                            android:layout_marginStart="10dp"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
             <!-- BOTON ABRIR -->
             <LinearLayout
                 android:id="@+id/contenedordebtn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:layout_below="@id/animationViewHome"
+                android:layout_below="@id/contenedordebtn4"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp">
 
