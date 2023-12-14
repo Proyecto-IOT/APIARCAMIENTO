@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.Toast;
 import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
 import com.example.apiarcamento.adapter.VehicleAdapter;
@@ -50,7 +50,6 @@ public class Add_vehicle extends AppCompatActivity {
                 String modelString=model.getText().toString();
                 String colorString=color.getText().toString();
 
-
                 SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 int user_id = sharedPref.getInt("id", 0);
 
@@ -73,20 +72,19 @@ public class Add_vehicle extends AppCompatActivity {
                 Call.enqueue(new Callback<Vehicle>() {
                     @Override
                     public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
+                        Vehicle sipi = response.body();
                         if(response.isSuccessful()){
                             Log.e("DEBUG", "successful: "+response.code() );
                             startActivity(IntentBack);
                             finish();
                         }else{
-                            Log.e("DEBUG", "failed: "+response.code() );
-                            startActivity(IntentBack);
-                            finish();
+                            Log.e("DEBUG", "failed: "+response.code() + response.message() );
+                            Toast.makeText(Add_vehicle.this,  "Sintaxis incorrecta", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Vehicle> call, Throwable t) {
-
                     }
                 });
             }

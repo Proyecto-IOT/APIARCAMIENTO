@@ -187,6 +187,7 @@
                 android:paddingEnd="8dp"
                 android:inputType="textPassword"
                 android:password="true"
+                android:hint="Longitud Minima 3, maxima 20"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <Button

@@ -52,6 +52,7 @@
                 android:layout_height="45dp"
                 android:layout_marginTop="8dp"
                 android:paddingStart="8dp"
+                android:hint="Longitud Minima 6, maximo 7"
                 android:paddingEnd="8dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

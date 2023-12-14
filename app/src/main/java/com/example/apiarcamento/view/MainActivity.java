@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         disableAllViews(linearr, true);
                         loading.setVisibility(View.INVISIBLE);
                         int colorLoading = 0xFFFFFFFF;
+                        Toast.makeText(MainActivity.this,  "Sintaxis incorrecta", Toast.LENGTH_SHORT).show();
                         padrino.setBackgroundColor(colorLoading);
                     }
                 }

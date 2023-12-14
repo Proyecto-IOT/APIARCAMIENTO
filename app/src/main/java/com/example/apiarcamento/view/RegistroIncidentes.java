@@ -36,19 +36,6 @@ public class RegistroIncidentes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_incidentes);
-
-        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        int user_id = sharedPref.getInt("id", 0);
-        User usuario = new User();
-        usuario.setUserid(user_id);
-        consts ip = new consts();
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(ip.ip)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
     }
 }
 

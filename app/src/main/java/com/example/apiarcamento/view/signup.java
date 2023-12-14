@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
@@ -115,6 +116,9 @@ public class signup extends AppCompatActivity {
 
                             startActivity(Login);
                             finish();
+                        }
+                        else {
+                            Toast.makeText(signup.this, "Sintaxis incorrecta", Toast.LENGTH_SHORT).show();
                         }
                     }
 

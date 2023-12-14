@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.apiarcamento.Const.consts;
 import com.example.apiarcamento.R;
@@ -90,6 +91,9 @@ public class MisDatos extends AppCompatActivity {
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, generos);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spGender.setAdapter(adapter);
+                }
+                else {
+                    Toast.makeText(MisDatos.this, "Sintaxis incorrecta", Toast.LENGTH_SHORT).show();
                 }
             }
 
