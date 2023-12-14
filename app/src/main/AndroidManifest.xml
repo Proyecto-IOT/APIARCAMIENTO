@@ -19,6 +19,9 @@
         <activity android:name="com.example.apiarcamento.view.fragments.ProfileFragment" />
 
         <activity
+            android:name=".view.RegistroIncidentes"
+            android:exported="false" />
+        <activity
             android:name=".estacioonarme"
             android:exported="false" />
         <activity

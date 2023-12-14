@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardBackgroundColor="@color/md_theme_light_onErrorContainer"
+    card_view:cardCornerRadius="20dp"
+    card_view:cardElevation="6dp"
+    card_view:contentPadding="4dp"
+    android:layout_marginTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tipoIncidente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de incidente"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/design_default_color_on_primary"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/fechaIncidente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha del incidente"
+            android:textSize="20sp"
+            android:textColor="@color/design_default_color_on_primary"
+            android:layout_below="@id/tipoIncidente"
+            android:layout_marginTop="8dp"/>
+
+        <ImageView
+            android:id="@+id/pokemonImagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tipoIncidente"
+            android:layout_marginStart="55dp"
+            android:src="@drawable/warning"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
