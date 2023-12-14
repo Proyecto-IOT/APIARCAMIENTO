@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(view -> {
             Intent registrarse = new Intent(this, signup.class);
             startActivity(registrarse);
-            //finish();
+            finish();
         });
 
         btnLogIn.setOnClickListener(view -> {
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
 
                         startActivity(Iniciar);
-                        //finish();
+                        finish();
                     }else{
                         Log.d("TOKENN", "mal");
                         disableAllViews(linearr, true);
@@ -146,4 +146,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+
+        // Añade las banderas
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
 }

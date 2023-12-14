@@ -2,6 +2,8 @@ package com.example.apiarcamento.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +20,8 @@ import com.example.apiarcamento.adapter.VehicleAdapter;
 import com.example.apiarcamento.models.User;
 import com.example.apiarcamento.models.Vehicle;
 import com.example.apiarcamento.retrofit.Vehicles;
+import com.example.apiarcamento.view.fragments.HomeFragment;
+import com.example.apiarcamento.view.fragments.ProfileFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,6 +75,7 @@ public class MisVehicles extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(IntentAdd);
+                finish();
             }
         });
     }

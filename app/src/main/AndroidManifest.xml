@@ -16,6 +16,8 @@
         android:theme="@style/Theme.APIARCAMENTO"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity android:name="com.example.apiarcamento.view.fragments.ProfileFragment" />
+
         <activity
             android:name=".view.RegistroIncidentes"
             android:exported="false" />

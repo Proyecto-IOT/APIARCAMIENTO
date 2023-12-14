@@ -74,7 +74,13 @@ public class Add_vehicle extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
                         if(response.isSuccessful()){
+                            Log.e("DEBUG", "successful: "+response.code() );
                             startActivity(IntentBack);
+                            finish();
+                        }else{
+                            Log.e("DEBUG", "failed: "+response.code() );
+                            startActivity(IntentBack);
+                            finish();
                         }
                     }
 
@@ -85,5 +91,13 @@ public class Add_vehicle extends AppCompatActivity {
                 });
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Log.e("DEBUG", "Bck: " );
+        Intent intent = new Intent(this, MisVehicles.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }
