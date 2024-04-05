@@ -121,4 +121,8 @@ class NewVehicleViewController: UIViewController {
 
         }.resume()    }
     
+    @IBAction func back() {
+        dismiss(animated:true)
+
+    }
 }

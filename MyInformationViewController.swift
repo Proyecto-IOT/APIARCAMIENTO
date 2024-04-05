@@ -17,7 +17,7 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfCorreo: UITextField!
     @IBOutlet weak var btnGuardarCambios: UIButton!
-    var generos = ["Masculino", "Femenino", "39 tipos de gay"]
+    var generos = ["Masculino", "Femenino", "39 tipos de gays"]
     let user = UserDefaults.standard
     
     

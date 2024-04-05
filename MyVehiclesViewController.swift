@@ -17,8 +17,10 @@ class MyVehiclesViewController: UIViewController {
 
         vAddVehicle.layer.cornerRadius = 10
         
-        userInfo()
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        userInfo()
     }
     
     func userInfo(){
@@ -45,15 +47,17 @@ class MyVehiclesViewController: UIViewController {
                 if let data = json["data"] as? [String: Any] {
                     for value in data {
                         print(value)
-                        let miView = UIView(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
-                        miView.backgroundColor = UIColor.red
-                        self.view.addSubview(miView)
-                        let miLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 180, height: 30))
-                        miLabel.text = "Mi etiqueta"
-                        miLabel.textColor = UIColor.white
-                        miLabel.textAlignment = .left
-                        miLabel.font = UIFont.systemFont(ofSize: 16)
-                        miView.addSubview(miLabel)
+                        DispatchQueue.main.async {
+                            let miView = UIView(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
+                            miView.backgroundColor = UIColor.red
+                            self.view.addSubview(miView)
+                            let miLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 180, height: 30))
+                            miLabel.text = "Mi etiqueta"
+                            miLabel.textColor = UIColor.white
+                            miLabel.textAlignment = .left
+                            miLabel.font = UIFont.systemFont(ofSize: 16)
+                            miView.addSubview(miLabel)
+                        }
                     }
                 }
             } catch {
