@@ -45,9 +45,34 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let sesion = URLSession(configuration: .default)
         sesion.dataTask(with: solicitud) { datos, respuesta, error in
             guard let datos = datos, error == nil else {
-                print("Error al realizar la solicitud:", error?.localizedDescription ?? "Error desconocido")
+                DispatchQueue.main.async {
+                    let mensaje = UIAlertController(title: "ERROR", message: "Error al realizar la solicitud: \(String(describing: error?.localizedDescription)) ,Error desconocido", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction(title: "ACEPTAR", style: .default)
+                    mensaje.addAction(ok)
+                    self.present(mensaje, animated: true)
+                }
                 return
             }
+            
+            var msg = ""
+            do {
+                let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
+                if let errors = json["errors"] as? [String: Any] {
+                    for (_, value) in errors {
+                        if let errorMessages = value as? [String] {
+                            let formattedErrors = errorMessages.joined(separator: "\n")
+                            msg += "\(formattedErrors)\n"
+                            print("Error: \(formattedErrors)")
+                        }
+                    }
+                } else if let mensaje = json["msg"] as? String {
+                    msg = mensaje
+                }
+            } catch {
+                print("Error al procesar la respuesta JSON")
+            }
+            
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
                 if let result = json["result"] as? Int {
@@ -76,10 +101,7 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
                                 
                             }
                         }
-                    } else {
-                        //Mensaje
-                    }
-                }
+                    }                 }
             } catch {
                 print("Error al analizar la respuesta JSON:", error)
             }
@@ -134,10 +156,34 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let sesion = URLSession(configuration: .default)
         sesion.dataTask(with: solicitud) { datos, respuesta, error in
             guard let datos = datos, error == nil else {
-                print("Error al realizar la solicitud:", error?.localizedDescription ?? "Error desconocido")
-                sender.isEnabled = true
+                DispatchQueue.main.async {
+                    let mensaje = UIAlertController(title: "Cuenta cerrada", message: "Error al realizar la solicitud: \(String(describing: error?.localizedDescription)) ,Error desconocido", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction(title: "ACEPTAR", style: .default)
+                    mensaje.addAction(ok)
+                    self.present(mensaje, animated: true)
+                    sender.isEnabled = true
+                }
                 return
             }
+            var msg = ""
+            do {
+                let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
+                if let errors = json["errors"] as? [String: Any] {
+                    for (_, value) in errors {
+                        if let errorMessages = value as? [String] {
+                            let formattedErrors = errorMessages.joined(separator: "\n")
+                            msg += "\(formattedErrors)\n"
+                            print("Error: \(formattedErrors)")
+                        }
+                    }
+                } else if let mensaje = json["msg"] as? String {
+                    msg = mensaje
+                }
+            } catch {
+                print("Error al procesar la respuesta JSON")
+            }
+
             if let httpResponse = respuesta as? HTTPURLResponse {
                 print("Código de estado de la respuesta:", httpResponse.statusCode)
                 estatus = httpResponse.statusCode
@@ -145,10 +191,38 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
             }
             DispatchQueue.main.async {
                 if estatus >= 400{
+                    var msg = ""
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
+                        if let errors = json["errors"] as? [String: Any] {
+                            for (_, value) in errors {
+                                if let errorMessages = value as? [String] {
+                                    let formattedErrors = errorMessages.joined(separator: "\n")
+                                    msg += "\(formattedErrors)\n"
+                                    print("Error: \(formattedErrors)")
+                                }
+                            }
+                        } else if let mensaje = json["msg"] as? String {
+                            msg = mensaje
+                        }
+                        let mensaje = UIAlertController(title: "ERROR", message: "\(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ACEPTAR", style: .default)
+                        mensaje.addAction(ok)
+                        self.present(mensaje, animated: true)
+
+                    } catch {
+                        print("Error al procesar la respuesta JSON")
+                    }
                     sender.isEnabled = true
                 }else if estatus >= 200 && estatus < 300{
-                    print("no?")
-                    self.dismiss(animated: true)
+                    
+                    let mensaje = UIAlertController(title: "EXITO", message: "\(msg)", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
+                        self.dismiss(animated: true)
+                    }
+                    mensaje.addAction(ok)
+                    self.present(mensaje, animated: true)
+                    
                 }
             }
 

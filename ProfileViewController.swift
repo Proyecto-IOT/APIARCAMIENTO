@@ -47,7 +47,6 @@ class ProfileViewController: UIViewController {
                 }
                 return
             }
-            print("HOla")
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
                 if let result = json["result"] as? Int {
@@ -104,22 +103,26 @@ class ProfileViewController: UIViewController {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
                 print(json)
                 let result = json["result"]
-                if result as! Int == 1{
-                    DispatchQueue.main.async {
-                        let mensaje = UIAlertController(title: "Cuenta cerrada", message: "Error al realizar la solicitud: \(error?.localizedDescription) ,Error desconocido", preferredStyle: .alert)
+                DispatchQueue.main.async {
+                    if result as! Int == 1{
+                        let mensaje = UIAlertController(title: "BYE :(", message: "Cuenta cerrada", preferredStyle: .alert)
+                        
+                        let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
+                            self.user.set(nil, forKey: "TOKEN")
+                            self.performSegue(withIdentifier: "sgLogin", sender: nil)
+                        }
+                        self.present(mensaje, animated: true)
+                        mensaje.addAction(ok)
+                    }else{
+                        sender.isEnabled = true
+                        let mensaje = UIAlertController(title: "ERROR", message: "Usuario no encontrado.", preferredStyle: .alert)
                         
                         let ok = UIAlertAction(title: "ACEPTAR", style: .default)
                         mensaje.addAction(ok)
-                        self.present(mensaje, animated: true)
                     }
-
-                    self.user.set(nil, forKey: "TOKEN")
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "sgLogin", sender: nil)
-                    }
-                }else{
-                    //MEnsaje
+                    
                 }
+                
             } catch {
                 print("Error al analizar la respuesta JSON:", error)
                 sender.isEnabled = true

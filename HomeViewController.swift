@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//hola
+//josex pendejex
         vIncidentes.layer.cornerRadius = 10
         vSalida.layer.cornerRadius = 10
         vEntrada.layer.cornerRadius = 10

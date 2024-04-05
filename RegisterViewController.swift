@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var btnSignup: UIButton!
     @IBOutlet weak var btnIoTengoCuenta: UIButton!
     @IBOutlet weak var lblCreditos: UILabel!
-    var generos = ["Masculino", "Femenino", "39 tipos de gay"]
+    var generos = ["Masculino", "Femenino", "39 tipos de gays"]
 
     
     
@@ -96,7 +96,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                     for (_, value) in errors {
                         if let errorMessages = value as? [String] {
                             let formattedErrors = errorMessages.joined(separator: "\n")
-                            msg += "\(formattedErrors)\n" // Solo agregamos los mensajes de error al mensaje final
+                            msg += "\(formattedErrors)\n"
                             print("Error: \(formattedErrors)")
                         }
                     }
