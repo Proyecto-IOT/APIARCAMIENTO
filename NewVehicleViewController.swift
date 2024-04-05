@@ -101,7 +101,7 @@ class NewVehicleViewController: UIViewController {
                     DispatchQueue.main.async {
                         if estatus >= 200 && estatus < 300{
                             print("Entra")
-                            let mensaje = UIAlertController(title: "EXITO", message: "Te has registrado con exito, activa tu cuenta en el correo mandado", preferredStyle: .alert)
+                            let mensaje = UIAlertController(title: "EXITO", message: "Se ha agregado el vehículo", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
                                 self.dismiss(animated: true)
                             }

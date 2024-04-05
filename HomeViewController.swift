@@ -14,13 +14,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var vIncidentes: UIView!
     @IBOutlet weak var vEntrada: UIView!
     @IBOutlet weak var vSalida: UIView!
-    
+    var longPressTimer: Timer?
+    var secondsElapsed: Int = 0
+    var impactFeedbackGenerator: UIImpactFeedbackGenerator?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         vIncidentes.layer.cornerRadius = 10
         vSalida.layer.cornerRadius = 10
         vEntrada.layer.cornerRadius = 10
         btnEstacionamiento.layer.cornerRadius = 10
+        impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
 
         
@@ -32,8 +37,51 @@ class HomeViewController: UIViewController {
    
 
     @IBAction func entrar() {
+        longPressTimer?.invalidate()
+           
+           // Reiniciar el contador de tiempo
+           secondsElapsed = 0
+        
+        longPressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(handleLongPress(_:)), userInfo: nil, repeats: false)
+
     }
     
-    @IBAction func salir() {
+    @IBAction func entrarTouchUpInside() {
+        longPressTimer?.invalidate()
     }
+    
+    
+    
+    @IBAction func salir() {
+        longPressTimer?.invalidate()
+           
+           // Reiniciar el contador de tiempo
+           secondsElapsed = 0
+        
+        longPressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(handleLongPress(_:)), userInfo: nil, repeats: false)
+    }
+    
+    
+    @IBAction func salirTouchUpInside() {
+        longPressTimer?.invalidate()
+
+    }
+    
+    
+    @objc func handleLongPress(_ timer: Timer) {
+        print("Botón mantenido presionado por un segundo")
+        longPressTimer?.invalidate()
+        vibrateDevice()
+    }
+    func vibrateDevice() {
+        guard let generator = impactFeedbackGenerator else {
+                return
+            }
+            
+            generator.prepare()
+            
+            generator.impactOccurred()
+        }
 }
+
+
