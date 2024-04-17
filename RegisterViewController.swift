@@ -69,6 +69,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             "email": tfEmail.text!,
             "password": tfPassword.text!
         ]
+        print(datos)
         
         var solicitud = URLRequest(url: url)
         solicitud.httpMethod = "POST"

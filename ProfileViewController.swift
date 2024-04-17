@@ -11,10 +11,12 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var vDatos: UIView!
+    @IBOutlet var ivProfile: UIImageView!
     let user = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //user.set("sadasd", forKey: "TOKEN")
 
         vDatos.layer.cornerRadius = 18
         vDatos.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -49,20 +51,53 @@ class ProfileViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
+                print(json)
                 if let result = json["result"] as? Int {
                     if result == 1 {
+                        
+                        
+                        
                         if let datos = json["data"] as? [String: Any] {
                             if let name = datos["name"] as? String {
                                 DispatchQueue.main.async {self.lblName.text = name}
+                            }
+                            if let name = datos["gender"] as? String {
+                                DispatchQueue.main.async {
+
+                                    if name == "Masculino"{
+                                        self.ivProfile.image = UIImage(named: "man")
+                                        
+                                    }else if name == "Femenino"{
+                                        self.ivProfile.image = UIImage(named: "woman")
+                                    }else{
+                                        self.ivProfile.image = UIImage(named: "alien")
+                                    }
+
+                                }
                             }
                         }
                     } else {
                         DispatchQueue.main.async {self.lblName.text = "..."}
                     }
                 }
+                else if let result = json["message"] as? String {
+                    if result == "Unauthenticated." {
+                        
+                        DispatchQueue.main.async {
+                            let mensaje = UIAlertController(title: "INFO", message: "Tu sesión ha caducado", preferredStyle: .alert)
+                            
+                            let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
+                                self.user.set(nil, forKey: "TOKEN")
+                                    
+                            }
+                            self.present(mensaje, animated: true)
+                            mensaje.addAction(ok)
+                        }
+                    }
+                }
             } catch {
                 DispatchQueue.main.async {
-                    let mensaje = UIAlertController(title: "ERROR", message: "Error al analizar la respuesta", preferredStyle: .alert)
+                    let mensaje = UIAlertController(title: "INFO", message: "Error al analizar la respuesta", preferredStyle: .alert)
                     
                     let ok = UIAlertAction(title: "ACEPTAR", style: .default)
                     mensaje.addAction(ok)
