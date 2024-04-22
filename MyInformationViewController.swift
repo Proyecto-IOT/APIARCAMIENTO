@@ -27,6 +27,8 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
         self.userInfo()
         pvGenero.dataSource = self
         pvGenero.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+              view.addGestureRecognizer(tapGesture)
     }
     
     func userInfo(){
@@ -246,4 +248,8 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func Back() {
         dismiss(animated:true)
     }
+    
+    @objc func hideKeyboard() {
+            view.endEditing(true)
+        }
 }

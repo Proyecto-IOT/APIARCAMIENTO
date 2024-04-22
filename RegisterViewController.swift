@@ -31,6 +31,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pvGenero.dataSource = self
         pvGenero.delegate = self
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+              view.addGestureRecognizer(tapGesture)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,6 +136,11 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }.resume()
         
     }
+    
+    @objc func hideKeyboard() {
+            view.endEditing(true)
+        }
+    
         
 }
 

@@ -23,7 +23,8 @@ class NewVehicleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+              view.addGestureRecognizer(tapGesture)
         btnAddVehicle.layer.cornerRadius = 10
 
     }
@@ -282,4 +283,7 @@ class NewVehicleViewController: UIViewController {
 
         }.resume()
     }
+    @objc func hideKeyboard() {
+            view.endEditing(true)
+        }
 }

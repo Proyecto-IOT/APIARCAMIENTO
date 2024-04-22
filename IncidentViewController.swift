@@ -219,7 +219,7 @@ class IncidentViewController: UIViewController {
             }
         }
         let urlbase = user.string(forKey: "URL");
-        let url = URL(string: urlbase! + "arduino/ruido")!
+        let url = URL(string: urlbase! + "arduino/sonido")!
         let token = "Bearer \(String(describing: user.string(forKey: "TOKEN")!))"
         
         let datos: [String: Any] = [
