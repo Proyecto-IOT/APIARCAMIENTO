@@ -20,7 +20,8 @@ class LoginViewController: UIViewController {
 
         btnsignup.layer.cornerRadius = 10
         btnSignin.layer.cornerRadius = 10
-    }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+              view.addGestureRecognizer(tapGesture)    }
     @IBAction func login() {
         btnSignin.isEnabled = false
         let defaults = UserDefaults.standard
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController {
         solicitud.httpMethod = "POST"
         solicitud.setValue("application/json", forHTTPHeaderField: "Content-Type")
         solicitud.setValue("application/json", forHTTPHeaderField: "Accept")
+        solicitud.setValue("ngrok-skip-browser-warning", forHTTPHeaderField: "true")
 
         
         do {
@@ -68,7 +70,6 @@ class LoginViewController: UIViewController {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 
                 if let data = json["data"] as? [String: Any], let token = data["token"] as? String {
                     DispatchQueue.main.async {
@@ -104,6 +105,13 @@ class LoginViewController: UIViewController {
         }.resume()
         
     }
+    @objc func hideKeyboard() {
+            view.endEditing(true)
+        }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            tfPass.resignFirstResponder()
+            return true
+        }
 
     
 }

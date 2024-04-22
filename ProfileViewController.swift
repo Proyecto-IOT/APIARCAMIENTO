@@ -40,7 +40,6 @@ class ProfileViewController: UIViewController {
         sesion.dataTask(with: solicitud) { datos, respuesta, error in
             guard let datos = datos, error == nil else {
                 DispatchQueue.main.async {
-                    print("FALLO")
                     let mensaje = UIAlertController(title: "ERROR", message: "Error al realizar la solicitud: \(String(describing: error?.localizedDescription)) ,Error desconocido", preferredStyle: .alert)
                     
                     let ok = UIAlertAction(title: "ACEPTAR", style: .default)
@@ -51,12 +50,8 @@ class ProfileViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 if let result = json["result"] as? Int {
                     if result == 1 {
-                        
-                        
-                        
                         if let datos = json["data"] as? [String: Any] {
                             if let name = datos["name"] as? String {
                                 DispatchQueue.main.async {self.lblName.text = name}
@@ -136,7 +131,6 @@ class ProfileViewController: UIViewController {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 let result = json["result"]
                 DispatchQueue.main.async {
                     if result as! Int == 1{

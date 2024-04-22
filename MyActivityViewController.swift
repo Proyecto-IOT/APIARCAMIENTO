@@ -20,6 +20,7 @@ class MyActivityViewController: UIViewController {
     var vieww: UIView!
     let user = UserDefaults.standard
     let colorLabel = UIColor.black
+    var timer: Timer?
 
     
     override func viewDidLoad() {
@@ -33,8 +34,23 @@ class MyActivityViewController: UIViewController {
         lblInOut.alpha = 0
         ivInOut.alpha = 1
         ivInOut.image = UIImage(named: "loading")
-        userActivity()
-        inOut()
+        self.userActivity()
+        self.inOut()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { timer in
+            self.lblSinRegistros.alpha = 0
+            self.ivEmpty.alpha = 1
+            self.ivEmpty.image = UIImage(named: "loading")
+            
+            self.lblInOut.alpha = 0
+            self.ivInOut.alpha = 1
+            self.ivInOut.image = UIImage(named: "loading")
+            self.userActivity()
+            self.inOut()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     func userActivity(){
@@ -64,7 +80,6 @@ class MyActivityViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 
                 if let msg = json["msg"] as? String {
                     if msg == "No se encuentra con un historial"{
@@ -76,16 +91,15 @@ class MyActivityViewController: UIViewController {
                 }
                
                 if let data = json["data"] as? [[String: Any]] {
-                    let spacing: CGFloat = 10 // Espacio entre las vistas
-                    var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
+                    let spacing: CGFloat = 10
+                    var totalHeight: CGFloat = spacing
                     DispatchQueue.main.async {
                         self.ivEmpty.alpha = 0
                         self.lblSinRegistros.alpha = 0
                         for (index, value) in data.enumerated() {
-                            //print(value)
                             
                             let xPos: CGFloat = 20
-                            let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                            let yPos: CGFloat = totalHeight
                             let width: CGFloat = self.svMyActivity.frame.width - 40
                             let height: CGFloat = 130
                             
@@ -148,11 +162,9 @@ class MyActivityViewController: UIViewController {
                             modeloLabel.textAlignment = .left
                             miView.addSubview(modeloLabel)
                             
-                            // Actualiza la altura total con el espacio para la siguiente vista
                             totalHeight += height + spacing
                         }
                         
-                        // Ajusta el contenido del scrollView
                         self.svMyActivity.contentSize = CGSize(width: self.svMyActivity
                         .frame.width, height: totalHeight)
                     }
@@ -211,7 +223,7 @@ class MyActivityViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-
+                print(json)
                 if let msg = json["msg"] as? String {
                     if msg == "No se encuentra con un historial"{
                         DispatchQueue.main.async {
@@ -222,15 +234,15 @@ class MyActivityViewController: UIViewController {
                 }
                 
                 if let data = json["data"] as? [[String: Any]] {
-                    let spacing: CGFloat = 10 // Espacio entre las vistas
-                    var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
+                    let spacing: CGFloat = 10
+                    var totalHeight: CGFloat = spacing
                     DispatchQueue.main.async {
                         self.ivInOut.alpha = 0
                         self.lblInOut.alpha = 0
                         for (index, value) in data.enumerated() {
                             
                             let xPos: CGFloat = 20
-                            let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                            let yPos: CGFloat = totalHeight
                             let width: CGFloat = self.svInOut.frame.width - 40
                             let height: CGFloat = 100
                             
@@ -241,7 +253,7 @@ class MyActivityViewController: UIViewController {
                             
                             let marcaLabel = UILabel(frame: CGRect(x: 10, y: 10, width: width - 20, height: 20))
                             var imageView = UIImageView(image: UIImage(named: "question-car"))
-                            
+
                             if let name = value["action"] as? String {
                                 if name == "Entrada"{
                                     imageView = UIImageView(image: UIImage(named: "log-in"))
@@ -265,7 +277,6 @@ class MyActivityViewController: UIViewController {
                             let timeLabel = UILabel(frame: CGRect(x: 10, y: 70, width: width - 20, height: 20))
                             
                             if let dateString = value["created_at"] as? String {
-                                //print(dateString)
                                 let date = String(dateString.dropLast(17))
                                 dateLabel.text = "Fecha:  \(date)"
                                 let time = String(dateString.dropFirst(11))
@@ -276,9 +287,8 @@ class MyActivityViewController: UIViewController {
                                 
                                 dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
                                 if let utcDate = dateFormatter.date(from:dateString) {
-                                    //print("hola")
-                                    dateFormatter.timeZone = TimeZone(abbreviation: "CST") // Central Standard Time para México
-                                    dateFormatter.dateFormat = "h:mm:ss a" // Formato de 12 horas con AM/PM
+                                    dateFormatter.timeZone = TimeZone(abbreviation: "CST")
+                                    dateFormatter.dateFormat = "h:mm:ss a"
                                     
                                     let mexicoDateStr = dateFormatter.string(from: utcDate)
                                     timeLabel.text = "Hora:  \(mexicoDateStr)"
@@ -298,25 +308,19 @@ class MyActivityViewController: UIViewController {
                             
                             
                             
-                            // Configura el tamaño de la imagen según sea necesario
                             imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-                            
-                            // Asegúrate de que el autoresizing esté habilitado para que la imagen se mantenga en la esquina inferior derecha
+
                             imageView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
                             
-                            // Agrega la vista de imagen a tu vista
                             miView.addSubview(imageView)
                             
-                            // Coloca la imagen en la esquina inferior derecha
                             imageView.frame.origin = CGPoint(x: miView.frame.width - imageView.frame.width, y: miView.frame.height - imageView.frame.height)
                             
-                            // Actualiza la altura total con el espacio para la siguiente vista
                             totalHeight += height + spacing
                         }
                         
                         
                         
-                        // Ajusta el contenido del scrollView
                         self.svInOut.contentSize = CGSize(width: self.svInOut
                             .frame.width, height: totalHeight)
                     }

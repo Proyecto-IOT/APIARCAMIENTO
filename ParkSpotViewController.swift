@@ -23,7 +23,6 @@ class ParkSpotViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        print(spot)
         lblParkSpot.alpha = 0
         ivLoading.alpha = 1
         ivLoading.image = UIImage(named: "loading")
@@ -71,8 +70,8 @@ class ParkSpotViewController: UIViewController {
                     }
                 }
                 if let data = json["data"] as? [[String: Any]] {
-                    let spacing: CGFloat = 10 // Espacio entre las vistas
-                    var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
+                    let spacing: CGFloat = 10
+                    var totalHeight: CGFloat = spacing
 
                     DispatchQueue.main.async {
                         self.ivLoading.alpha = 0
@@ -81,7 +80,7 @@ class ParkSpotViewController: UIViewController {
                         for (index, value) in data.enumerated() {
                             
                             let xPos: CGFloat = 20
-                            let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                            let yPos: CGFloat = totalHeight
                             let width: CGFloat = self.svParkSpot.frame.width - 40
                             let height: CGFloat = 130
                             
@@ -143,7 +142,6 @@ class ParkSpotViewController: UIViewController {
                             totalHeight += height + spacing
                         }
                         
-                        // Ajusta el contenido del scrollView
                         self.svParkSpot.contentSize = CGSize(width: self.svParkSpot.frame.width, height: totalHeight)
                     }
                     
@@ -173,7 +171,6 @@ class ParkSpotViewController: UIViewController {
             mensaje.addAction(ok)
             mensaje.addAction(no)
 
-            print(sender.tag)
             
         }
     func post(tag: Int){
@@ -208,7 +205,6 @@ class ParkSpotViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 let result = json["result"]
                 if result as! Int == 1{
                     DispatchQueue.main.async {

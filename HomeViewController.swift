@@ -46,7 +46,6 @@ class HomeViewController: UIViewController {
         ruta = "1"
         longPressTimer?.invalidate()
            
-        // Reiniciar el contador de tiempo
         secondsElapsed = 0
         
         longPressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(handleLongPress(_:)), userInfo: nil, repeats: false)
@@ -63,7 +62,6 @@ class HomeViewController: UIViewController {
         ruta = "0"
         longPressTimer?.invalidate()
            
-           // Reiniciar el contador de tiempo
            secondsElapsed = 0
         
         longPressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(handleLongPress(_:)), userInfo: nil, repeats: false)
@@ -78,7 +76,6 @@ class HomeViewController: UIViewController {
     
    
     @objc func handleLongPress(_ timer: Timer) {
-        print("Botón mantenido presionado por un segundo")
         longPressTimer?.invalidate()
         vibrateDevice()
         enterAPI()
@@ -95,9 +92,8 @@ class HomeViewController: UIViewController {
     
     func enterAPI(){
         let urlbase = user.string(forKey: "URL");
-        let url = URL(string: urlbase! + "arduino/acceso/"+ruta)!
+        let url = URL(string: urlbase! + "user/acceso/"+ruta)!
         let token = "Bearer \(String(describing: user.string(forKey: "TOKEN")!))"
-        print(token)
         var solicitud = URLRequest(url: url)
         solicitud.httpMethod = "POST"
         solicitud.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -115,7 +111,6 @@ class HomeViewController: UIViewController {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
                 print(json)
                 if let data = json["data"] as? [[String: Any]] {
-                    
                     
                 }
                 else if let result = json["message"] as? String {

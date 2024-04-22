@@ -15,7 +15,7 @@ class ViewController: UIViewController {
             super.viewDidLoad()
             
         //defaults.set("http://192.168.80.130:8000/api/v3/", forKey: "URL")
-        defaults.set("http://192.168.254.15:8000/api/v3/", forKey: "URL")
+        defaults.set("http://192.168.254.240:8000/api/v3/", forKey: "URL")
 
             let w  = 0.80 * view.frame.width
             let h = 0.43 * w

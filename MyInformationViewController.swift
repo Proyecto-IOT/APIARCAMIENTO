@@ -146,7 +146,6 @@ class MyInformationViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         
         do {
-            print("si?")
             solicitud.httpBody = try JSONSerialization.data(withJSONObject: datos, options: .prettyPrinted)
         } catch let error {
             print("Error al serializar los datos:", error.localizedDescription)

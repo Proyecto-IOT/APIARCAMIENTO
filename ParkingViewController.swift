@@ -72,10 +72,8 @@ class ParkingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sgParkSpot" {
             if let spot = sender as? Int {
-                // Aquí puedes acceder al valor de 'spot'
-                // y pasarlo al view controller de destino.
                 if let destinationVC = segue.destination as? ParkSpotViewController {
-                    // Supongamos que DestinationViewController tiene una propiedad 'spotNumber'
+
                     destinationVC.spot = spot
                 }
             }
@@ -104,12 +102,9 @@ class ParkingViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 if let data = json["data"] as? [[String: Any]] {
                     for datos in data{
                         if let spotSend = datos["parking_id"] as? Int {
-                            
-                            print("hola")
                             if let isActive = datos["is_active"] as? Int {
                                 if isActive == 1 {
                                     for car in self.ImvsCar {
@@ -144,7 +139,6 @@ class ParkingViewController: UIViewController {
                                     }
 
                                 }
-                                print("hola")
                                 
                             }
                         }

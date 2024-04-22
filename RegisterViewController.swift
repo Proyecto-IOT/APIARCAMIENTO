@@ -69,7 +69,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             "email": tfEmail.text!,
             "password": tfPassword.text!
         ]
-        print(datos)
         
         var solicitud = URLRequest(url: url)
         solicitud.httpMethod = "POST"
@@ -112,10 +111,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if let httpResponse = respuesta as? HTTPURLResponse {
                 estatus = httpResponse.statusCode
                 DispatchQueue.main.async {
-                    print("Estatus:", estatus)
                     DispatchQueue.main.async {
                         if estatus >= 200 && estatus < 300{
-                            print("Entra")
                             let mensaje = UIAlertController(title: "EXITO", message: "Te has registrado con exito, activa tu cuenta en el correo mandado", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
                                 self.performSegue(withIdentifier: "sgSingUp", sender: nil)

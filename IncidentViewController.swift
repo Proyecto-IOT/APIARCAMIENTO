@@ -19,9 +19,13 @@ class IncidentViewController: UIViewController {
     var vieww: UIView!
     let user = UserDefaults.standard
     let colorLabel = UIColor.black
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         lblHumo.alpha = 0
         ivHumo.alpha = 1
         ivHumo.image = UIImage(named: "loading")
@@ -29,12 +33,24 @@ class IncidentViewController: UIViewController {
         lblRuido.alpha = 0
         ivRuido.alpha = 1
         ivRuido.image = UIImage(named: "loading")
-        humo()
-        ruido()
+        self.humo()
+        self.ruido()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { timer in
+            self.lblHumo.alpha = 0
+            self.ivHumo.alpha = 1
+            self.ivHumo.image = UIImage(named: "loading")
+            
+            self.lblRuido.alpha = 0
+            self.ivRuido.alpha = 1
+            self.ivRuido.image = UIImage(named: "loading")
+            self.humo()
+            self.ruido()
+        }
     }
-    
 
     @IBAction func back() {
+        self.timer?.invalidate()
+        self.timer = nil
         dismiss(animated:true)
     }
     func humo(){
@@ -77,7 +93,6 @@ class IncidentViewController: UIViewController {
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
                 print(json)
-                
                 if let msg = json["msg"] as? String {
                     if msg == "No se encuentra con un historial"{
                         DispatchQueue.main.async {
@@ -89,19 +104,17 @@ class IncidentViewController: UIViewController {
                 
                 if let data = json["data"] as? [String: Any] {
                     if let dataa = data["Data"] as? [[String: Any]] {
-                        print("Jarik joto")
 
-                        let spacing: CGFloat = 10 // Espacio entre las vistas
-                        var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
+                        let spacing: CGFloat = 10
+                        var totalHeight: CGFloat = spacing
                         DispatchQueue.main.async {
                             self.ivHumo.alpha = 0
                             self.lblHumo.alpha = 0
-                            //print(value)
                             for (index, value) in dataa.enumerated() {
                                 
                                 
                                 let xPos: CGFloat = 20
-                                let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                                let yPos: CGFloat = totalHeight
                                 let width: CGFloat = self.svHumo.frame.width - 40
                                 let height: CGFloat = 130
                                 
@@ -124,26 +137,48 @@ class IncidentViewController: UIViewController {
                                 
                                 let dateLabel = UILabel(frame: CGRect(x: 10, y: 40, width: width - 20, height: 20))
                                 if let dateString = value["Fecha"] as? String {
-                                    let newString = String(dateString.dropLast(10))
+                                    let newString = String(dateString.dropLast(6))
                                     dateLabel.text = "Fecha:  \(newString)"
                                 } else {
                                     dateLabel.text = "No Date"
                                 }
                                 
+                                
+                                let hourLabel = UILabel(frame: CGRect(x: 10, y: 70, width: width - 20, height: 20))
+
+                                if let hourString = value["Fecha"] as? String {
+                                    let newString = String(hourString.dropFirst(11))
+                                    hourLabel.text = "Hora:  \(newString)"
+                                } else {
+                                    hourLabel.text = "No Date"
+                                }
+                                
+                                hourLabel.textColor = self.colorLabel
+                                hourLabel.textAlignment = .left
+                                miView.addSubview(hourLabel)
+                                
                                 dateLabel.textColor = self.colorLabel
                                 dateLabel.textAlignment = .left
                                 miView.addSubview(dateLabel)
+                                
                                 
                                 dateLabel.textColor = self.colorLabel
                                 dateLabel.textAlignment = .left
                                 miView.addSubview(dateLabel)
                               
+                                var imageView = UIImageView(image: UIImage(named: "smoke"))
                                 
-                                // Actualiza la altura total con el espacio para la siguiente vista
+                                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+
+                                imageView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                                
+                                miView.addSubview(imageView)
+                                
+                                imageView.frame.origin = CGPoint(x: miView.frame.width - imageView.frame.width, y: miView.frame.height - imageView.frame.height)
+                                
                                 totalHeight += height + spacing
                             }
                             
-                            // Ajusta el contenido del scrollView
                             self.svHumo.contentSize = CGSize(width: self.svHumo
                                 .frame.width, height: totalHeight)
                         }
@@ -184,7 +219,7 @@ class IncidentViewController: UIViewController {
             }
         }
         let urlbase = user.string(forKey: "URL");
-        let url = URL(string: urlbase! + "arduino/humo")!
+        let url = URL(string: urlbase! + "arduino/ruido")!
         let token = "Bearer \(String(describing: user.string(forKey: "TOKEN")!))"
         
         let datos: [String: Any] = [
@@ -213,7 +248,6 @@ class IncidentViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 
                 if let msg = json["msg"] as? String {
                     if msg == "No se encuentra con un historial"{
@@ -226,19 +260,17 @@ class IncidentViewController: UIViewController {
                 
                 if let data = json["data"] as? [String: Any] {
                     if let dataa = data["Data"] as? [[String: Any]] {
-                        print("Jarik joto")
 
-                        let spacing: CGFloat = 10 // Espacio entre las vistas
-                        var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
+                        let spacing: CGFloat = 10
+                        var totalHeight: CGFloat = spacing
                         DispatchQueue.main.async {
                             self.ivRuido.alpha = 0
                             self.lblRuido.alpha = 0
-                            //print(value)
                             for (index, value) in dataa.enumerated() {
                                 
                                 
                                 let xPos: CGFloat = 20
-                                let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                                let yPos: CGFloat = totalHeight
                                 let width: CGFloat = self.svRuido.frame.width - 40
                                 let height: CGFloat = 130
                                 
@@ -261,11 +293,23 @@ class IncidentViewController: UIViewController {
                                 
                                 let dateLabel = UILabel(frame: CGRect(x: 10, y: 40, width: width - 20, height: 20))
                                 if let dateString = value["Fecha"] as? String {
-                                    let newString = String(dateString.dropLast(10))
+                                    let newString = String(dateString.dropLast(6))
                                     dateLabel.text = "Fecha:  \(newString)"
                                 } else {
                                     dateLabel.text = "No Date"
                                 }
+                                let hourLabel = UILabel(frame: CGRect(x: 10, y: 70, width: width - 20, height: 20))
+
+                                if let hourString = value["Fecha"] as? String {
+                                    let newString = String(hourString.dropFirst(11))
+                                    hourLabel.text = "Hora:  \(newString)"
+                                } else {
+                                    hourLabel.text = "No Date"
+                                }
+                                
+                                hourLabel.textColor = self.colorLabel
+                                hourLabel.textAlignment = .left
+                                miView.addSubview(hourLabel)
                                 
                                 dateLabel.textColor = self.colorLabel
                                 dateLabel.textAlignment = .left
@@ -275,12 +319,19 @@ class IncidentViewController: UIViewController {
                                 dateLabel.textAlignment = .left
                                 miView.addSubview(dateLabel)
                               
+                                var imageView = UIImageView(image: UIImage(named: "noise"))
                                 
-                                // Actualiza la altura total con el espacio para la siguiente vista
+                                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+
+                                imageView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                                
+                                miView.addSubview(imageView)
+                                
+                                imageView.frame.origin = CGPoint(x: miView.frame.width - imageView.frame.width, y: miView.frame.height - imageView.frame.height)
+                                
                                 totalHeight += height + spacing
                             }
                             
-                            // Ajusta el contenido del scrollView
                             self.svRuido.contentSize = CGSize(width: self.svRuido
                                 .frame.width, height: totalHeight)
                         }

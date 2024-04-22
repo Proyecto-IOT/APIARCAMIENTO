@@ -31,7 +31,6 @@ class NewVehicleViewController: UIViewController {
         svNewVehicle.contentSize = CGSize(width: 0, height: btnAddVehicle.frame.origin.y + btnAddVehicle.frame.height + 10)
         
         if spot != 0 {
-            print("diferente")
             edit()
         }
     }
@@ -56,7 +55,6 @@ class NewVehicleViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 if let msg = json["msg"] as? String {
                     if msg == "No cuentas con vehiculos."{
                         
@@ -64,13 +62,11 @@ class NewVehicleViewController: UIViewController {
                 }
                 if let data = json["data"] as? [String: Any] {
                     
-                    print(data)
                     
                     DispatchQueue.main.async {
                         
                         
                         if let name = data["brand"] as? String {
-                            print("sipuedo")
                             self.tfBrand.text = name
                         } else {
                         }
@@ -109,7 +105,6 @@ class NewVehicleViewController: UIViewController {
             editFunc(sender: sender)
             return;
         }
-        print("hola")
         sender.isEnabled = false
         let defaults = UserDefaults.standard
         let urlbase = defaults.string(forKey: "URL");
@@ -119,7 +114,6 @@ class NewVehicleViewController: UIViewController {
         
         let datos: [String: Any] = [
             "license_plate": tfPlate.text!,
-            //"user_id": "2",
             "brand": tfBrand.text!,
             "model": tfModel.text!,
             "color": tfColor.text!,
@@ -175,10 +169,8 @@ class NewVehicleViewController: UIViewController {
             if let httpResponse = respuesta as? HTTPURLResponse {
                 estatus = httpResponse.statusCode
                 DispatchQueue.main.async {
-                    print("Estatus:", estatus)
                     DispatchQueue.main.async {
                         if estatus >= 200 && estatus < 300{
-                            print("Entra")
                             let mensaje = UIAlertController(title: "EXITO", message: "Se ha agregado el vehículo", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
                                 self.dismiss(animated: true)
@@ -204,7 +196,6 @@ class NewVehicleViewController: UIViewController {
 
     }
     func editFunc(sender:UIButton){
-        print("hola")
         sender.isEnabled = false
         let defaults = UserDefaults.standard
         let urlbase = defaults.string(forKey: "URL");
@@ -214,7 +205,6 @@ class NewVehicleViewController: UIViewController {
         
         let datos: [String: Any] = [
             "license_plate": tfPlate.text!,
-            //"user_id": "2",
             "brand": tfBrand.text!,
             "model": tfModel.text!,
             "color": tfColor.text!,
@@ -270,10 +260,8 @@ class NewVehicleViewController: UIViewController {
             if let httpResponse = respuesta as? HTTPURLResponse {
                 estatus = httpResponse.statusCode
                 DispatchQueue.main.async {
-                    print("Estatus:", estatus)
                     DispatchQueue.main.async {
                         if estatus >= 200 && estatus < 300{
-                            print("Entra")
                             let mensaje = UIAlertController(title: "EXITO", message: "Se ha agregado el vehículo", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "ACEPTAR", style: .default){ (action) in
                                 self.dismiss(animated: true)

@@ -60,7 +60,6 @@ class MyVehiclesViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 if let msg = json["msg"] as? String {
                     if msg == "No cuentas con vehiculos."{
                         DispatchQueue.main.async {
@@ -71,19 +70,17 @@ class MyVehiclesViewController: UIViewController {
                     }
                 }
                 if let data = json["data"] as? [[String: Any]] {
-                    let spacing: CGFloat = 10 // Espacio entre las vistas
-                    var totalHeight: CGFloat = spacing // Inicializamos con el espacio superior
-                    print(data)
+                    let spacing: CGFloat = 10
+                    var totalHeight: CGFloat = spacing
 
                     DispatchQueue.main.async {
                         self.ivVehicle.alpha = 0
                         self.lblVehicle.alpha = 0
 
                         for (index, value) in data.enumerated() {
-                            print(value)
                             
                             let xPos: CGFloat = 20
-                            let yPos: CGFloat = totalHeight // Posición vertical de la vista
+                            let yPos: CGFloat = totalHeight
                             let width: CGFloat = self.svMyVehicles.frame.width - 40
                             let height: CGFloat = 170
                             
@@ -164,18 +161,16 @@ class MyVehiclesViewController: UIViewController {
                             miView.addSubview(btnEdit)
                             btnEdit.translatesAutoresizingMaskIntoConstraints = false
                             NSLayoutConstraint.activate([
-                                btnEdit.trailingAnchor.constraint(equalTo: btnDetalle.leadingAnchor, constant: -10), // Ajusta la constante según el espacio que quieras entre los botones
+                                btnEdit.trailingAnchor.constraint(equalTo: btnDetalle.leadingAnchor, constant: -10),
                                 btnEdit.bottomAnchor.constraint(equalTo: miView.bottomAnchor),
                                 btnEdit.widthAnchor.constraint(equalToConstant: 160),
                                 btnEdit.heightAnchor.constraint(equalToConstant: 40)
                             ])
 
 
-                            // Actualiza la altura total con el espacio para la siguiente vista
                             totalHeight += height + spacing
                         }
                         
-                        // Ajusta el contenido del scrollView
                         self.svMyVehicles.contentSize = CGSize(width: self.svMyVehicles.frame.width, height: totalHeight)
                     }
                     
@@ -211,7 +206,6 @@ class MyVehiclesViewController: UIViewController {
             mensaje.addAction(ok)
             mensaje.addAction(no)
 
-            print(sender.tag)
             
         }
     @objc func edit(sender: UIButton)
@@ -233,16 +227,12 @@ class MyVehiclesViewController: UIViewController {
             mensaje.addAction(ok)
             mensaje.addAction(no)
 
-            print(sender.tag)
             
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sgEdit" {
             if let spot = sender as? Int {
-                // Aquí puedes acceder al valor de 'spot'
-                // y pasarlo al view controller de destino.
                 if let destinationVC = segue.destination as? NewVehicleViewController {
-                    // Supongamos que DestinationViewController tiene una propiedad 'spotNumber'
                     destinationVC.spot = spot
                 }
             }
@@ -269,7 +259,6 @@ class MyVehiclesViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: datos) as! [String:Any]
-                print(json)
                 let result = json["result"]
                 if result as! Int == 1{
                     self.vehicle()
