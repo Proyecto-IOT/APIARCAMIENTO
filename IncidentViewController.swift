@@ -127,7 +127,19 @@ class IncidentViewController: UIViewController {
                                
                                 
                                 if let dato = value["Dato"] as? String {
-                                    datoLabel.text = "Porcentaje de humo: \(dato)%"
+                                    
+                                    if Int(dato)! <= 100{
+                                        datoLabel.text = "Nivel de humo bajo: \(dato) ppm"
+
+                                    }
+                                    else if Int(dato)! <= 300{
+                                        datoLabel.text = "Nivel de humo medio: \(dato) ppm"
+
+                                    }
+                                    else{
+                                        datoLabel.text = "Nivel de humo alto: \(dato) ppm"
+
+                                    }
                                 } else {
                                     datoLabel.text = "No Spot"
                                 }
